@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "apollographql.vscode-apollo",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "codezombiech.gitignore",
+    "cssho.vscode-svgviewer",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "jpoissonnier.vscode-styled-components",
+    "KnisterPeter.vscode-commitizen",
+    "kumar-harsh.graphql-for-vscode",
+    "mikestead.dotenv",
+    "msjsdiag.debugger-for-chrome",
+    "ms-vsliveshare.vsliveshare",
+    "ms-vsliveshare.vsliveshare-pack",
+    "pflannery.vscode-versionlens",
+    "redhat.vscode-yaml"
+  ]
+}

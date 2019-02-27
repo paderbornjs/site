@@ -1,0 +1,51 @@
+scalar DateTime
+
+type Organizer {
+  description: String!
+  name: String!
+  twitter: TwitterAccount!
+}
+
+type TwitterAccount {
+  name: String!
+  profileImageUrl: String!
+}
+
+type Event {
+  date: DateTime!
+  goingCount: Int!
+  url: String!
+  venue: EventVenue!
+}
+
+type EventVenue {
+  city: String!
+  country: String!
+  lat: Float!
+  lon: Float!
+  name: String!
+  street: String!
+}
+
+type Talk {
+  date: DateTime!
+  description: String!
+  isLightningTalk: Boolean!
+  labels: [String!]!
+  speaker: Speaker!
+  title: String!
+}
+
+type Speaker {
+  avatarUrl: String!
+  name: String!
+  occupation: String!
+  socialName: String
+  socialUrl: String
+}
+
+type Query {
+  organizers: [Organizer!]!
+  upcomingEvents: [Event!]!
+  upcomingTalks: [Talk!]!
+}
