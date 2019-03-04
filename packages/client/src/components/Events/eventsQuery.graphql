@@ -1,0 +1,29 @@
+query EventsQuery {
+  upcomingEvents {
+    date
+    goingCount
+    url
+    venue {
+      city
+      country
+      lat
+      lon
+      name
+      street
+    }
+  }
+  upcomingTalks {
+    title
+    description
+    date
+    speaker {
+      name
+      occupation
+      socialName
+      socialUrl
+      avatarUrl
+    }
+    isLightningTalk
+    labels
+  }
+}

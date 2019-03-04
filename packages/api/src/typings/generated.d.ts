@@ -99,24 +99,24 @@ import {
 
 import { ContextType } from '../utils/createContext'
 
-export type Resolver<Result, Parent = {}, Context = {}, Args = {}> = (
+export type Resolver<Result, Parent = {}, TContext = {}, Args = {}> = (
   parent: Parent,
   args: Args,
-  context: Context,
+  context: TContext,
   info: GraphQLResolveInfo
 ) => Promise<Result> | Result
 
-export interface ISubscriptionResolverObject<Result, Parent, Context, Args> {
+export interface ISubscriptionResolverObject<Result, Parent, TContext, Args> {
   subscribe<R = Result, P = Parent>(
     parent: P,
     args: Args,
-    context: Context,
+    context: TContext,
     info: GraphQLResolveInfo
   ): AsyncIterator<R | Result> | Promise<AsyncIterator<R | Result>>
   resolve?<R = Result, P = Parent>(
     parent: P,
     args: Args,
-    context: Context,
+    context: TContext,
     info: GraphQLResolveInfo
   ): R | Result | Promise<R | Result>
 }
@@ -124,17 +124,17 @@ export interface ISubscriptionResolverObject<Result, Parent, Context, Args> {
 export type SubscriptionResolver<
   Result,
   Parent = {},
-  Context = {},
+  TContext = {},
   Args = {}
 > =
   | ((
       ...args: any[]
-    ) => ISubscriptionResolverObject<Result, Parent, Context, Args>)
-  | ISubscriptionResolverObject<Result, Parent, Context, Args>
+    ) => ISubscriptionResolverObject<Result, Parent, TContext, Args>)
+  | ISubscriptionResolverObject<Result, Parent, TContext, Args>
 
-export type TypeResolveFn<Types, Parent = {}, Context = {}> = (
+export type TypeResolveFn<Types, Parent = {}, TContext = {}> = (
   parent: Parent,
-  context: Context,
+  context: TContext,
   info: GraphQLResolveInfo
 ) => Maybe<Types>
 
@@ -149,244 +149,244 @@ export type DirectiveResolverFn<TResult, TArgs = {}, TContext = {}> = (
 ) => TResult | Promise<TResult>
 
 export namespace QueryResolvers {
-  export interface Resolvers<Context = ContextType, TypeParent = {}> {
-    organizers?: OrganizersResolver<Organizer[], TypeParent, Context>
+  export interface Resolvers<TContext = ContextType, TypeParent = {}> {
+    organizers?: OrganizersResolver<Organizer[], TypeParent, TContext>
 
-    upcomingEvents?: UpcomingEventsResolver<Event[], TypeParent, Context>
+    upcomingEvents?: UpcomingEventsResolver<Event[], TypeParent, TContext>
 
-    upcomingTalks?: UpcomingTalksResolver<Talk[], TypeParent, Context>
+    upcomingTalks?: UpcomingTalksResolver<Talk[], TypeParent, TContext>
   }
 
   export type OrganizersResolver<
     R = Organizer[],
     Parent = {},
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type UpcomingEventsResolver<
     R = Event[],
     Parent = {},
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type UpcomingTalksResolver<
     R = Talk[],
     Parent = {},
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
 }
 
 export namespace OrganizerResolvers {
-  export interface Resolvers<Context = ContextType, TypeParent = Organizer> {
-    description?: DescriptionResolver<string, TypeParent, Context>
+  export interface Resolvers<TContext = ContextType, TypeParent = Organizer> {
+    description?: DescriptionResolver<string, TypeParent, TContext>
 
-    name?: NameResolver<string, TypeParent, Context>
+    name?: NameResolver<string, TypeParent, TContext>
 
-    twitter?: TwitterResolver<TwitterAccount, TypeParent, Context>
+    twitter?: TwitterResolver<TwitterAccount, TypeParent, TContext>
   }
 
   export type DescriptionResolver<
     R = string,
     Parent = Organizer,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type NameResolver<
     R = string,
     Parent = Organizer,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type TwitterResolver<
     R = TwitterAccount,
     Parent = Organizer,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
 }
 
 export namespace TwitterAccountResolvers {
   export interface Resolvers<
-    Context = ContextType,
+    TContext = ContextType,
     TypeParent = TwitterAccount
   > {
-    name?: NameResolver<string, TypeParent, Context>
+    name?: NameResolver<string, TypeParent, TContext>
 
-    profileImageUrl?: ProfileImageUrlResolver<string, TypeParent, Context>
+    profileImageUrl?: ProfileImageUrlResolver<string, TypeParent, TContext>
   }
 
   export type NameResolver<
     R = string,
     Parent = TwitterAccount,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type ProfileImageUrlResolver<
     R = string,
     Parent = TwitterAccount,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
 }
 
 export namespace EventResolvers {
-  export interface Resolvers<Context = ContextType, TypeParent = Event> {
-    date?: DateResolver<DateTime, TypeParent, Context>
+  export interface Resolvers<TContext = ContextType, TypeParent = Event> {
+    date?: DateResolver<DateTime, TypeParent, TContext>
 
-    goingCount?: GoingCountResolver<number, TypeParent, Context>
+    goingCount?: GoingCountResolver<number, TypeParent, TContext>
 
-    url?: UrlResolver<string, TypeParent, Context>
+    url?: UrlResolver<string, TypeParent, TContext>
 
-    venue?: VenueResolver<EventVenue, TypeParent, Context>
+    venue?: VenueResolver<EventVenue, TypeParent, TContext>
   }
 
   export type DateResolver<
     R = DateTime,
     Parent = Event,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type GoingCountResolver<
     R = number,
     Parent = Event,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type UrlResolver<
     R = string,
     Parent = Event,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type VenueResolver<
     R = EventVenue,
     Parent = Event,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
 }
 
 export namespace EventVenueResolvers {
-  export interface Resolvers<Context = ContextType, TypeParent = EventVenue> {
-    city?: CityResolver<string, TypeParent, Context>
+  export interface Resolvers<TContext = ContextType, TypeParent = EventVenue> {
+    city?: CityResolver<string, TypeParent, TContext>
 
-    country?: CountryResolver<string, TypeParent, Context>
+    country?: CountryResolver<string, TypeParent, TContext>
 
-    lat?: LatResolver<number, TypeParent, Context>
+    lat?: LatResolver<number, TypeParent, TContext>
 
-    lon?: LonResolver<number, TypeParent, Context>
+    lon?: LonResolver<number, TypeParent, TContext>
 
-    name?: NameResolver<string, TypeParent, Context>
+    name?: NameResolver<string, TypeParent, TContext>
 
-    street?: StreetResolver<string, TypeParent, Context>
+    street?: StreetResolver<string, TypeParent, TContext>
   }
 
   export type CityResolver<
     R = string,
     Parent = EventVenue,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type CountryResolver<
     R = string,
     Parent = EventVenue,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type LatResolver<
     R = number,
     Parent = EventVenue,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type LonResolver<
     R = number,
     Parent = EventVenue,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type NameResolver<
     R = string,
     Parent = EventVenue,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type StreetResolver<
     R = string,
     Parent = EventVenue,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
 }
 
 export namespace TalkResolvers {
-  export interface Resolvers<Context = ContextType, TypeParent = Talk> {
-    date?: DateResolver<DateTime, TypeParent, Context>
+  export interface Resolvers<TContext = ContextType, TypeParent = Talk> {
+    date?: DateResolver<DateTime, TypeParent, TContext>
 
-    description?: DescriptionResolver<string, TypeParent, Context>
+    description?: DescriptionResolver<string, TypeParent, TContext>
 
-    isLightningTalk?: IsLightningTalkResolver<boolean, TypeParent, Context>
+    isLightningTalk?: IsLightningTalkResolver<boolean, TypeParent, TContext>
 
-    labels?: LabelsResolver<string[], TypeParent, Context>
+    labels?: LabelsResolver<string[], TypeParent, TContext>
 
-    speaker?: SpeakerResolver<Speaker, TypeParent, Context>
+    speaker?: SpeakerResolver<Speaker, TypeParent, TContext>
 
-    title?: TitleResolver<string, TypeParent, Context>
+    title?: TitleResolver<string, TypeParent, TContext>
   }
 
   export type DateResolver<
     R = DateTime,
     Parent = Talk,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type DescriptionResolver<
     R = string,
     Parent = Talk,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type IsLightningTalkResolver<
     R = boolean,
     Parent = Talk,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type LabelsResolver<
     R = string[],
     Parent = Talk,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type SpeakerResolver<
     R = Speaker,
     Parent = Talk,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type TitleResolver<
     R = string,
     Parent = Talk,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
 }
 
 export namespace SpeakerResolvers {
-  export interface Resolvers<Context = ContextType, TypeParent = Speaker> {
-    avatarUrl?: AvatarUrlResolver<string, TypeParent, Context>
+  export interface Resolvers<TContext = ContextType, TypeParent = Speaker> {
+    avatarUrl?: AvatarUrlResolver<string, TypeParent, TContext>
 
-    name?: NameResolver<string, TypeParent, Context>
+    name?: NameResolver<string, TypeParent, TContext>
 
-    occupation?: OccupationResolver<string, TypeParent, Context>
+    occupation?: OccupationResolver<string, TypeParent, TContext>
 
-    socialName?: SocialNameResolver<Maybe<string>, TypeParent, Context>
+    socialName?: SocialNameResolver<Maybe<string>, TypeParent, TContext>
 
-    socialUrl?: SocialUrlResolver<Maybe<string>, TypeParent, Context>
+    socialUrl?: SocialUrlResolver<Maybe<string>, TypeParent, TContext>
   }
 
   export type AvatarUrlResolver<
     R = string,
     Parent = Speaker,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type NameResolver<
     R = string,
     Parent = Speaker,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type OccupationResolver<
     R = string,
     Parent = Speaker,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type SocialNameResolver<
     R = Maybe<string>,
     Parent = Speaker,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
   export type SocialUrlResolver<
     R = Maybe<string>,
     Parent = Speaker,
-    Context = ContextType
-  > = Resolver<R, Parent, Context>
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
 }
 
 /** Directs the executor to skip this field or fragment when the `if` argument is true. */
@@ -427,19 +427,19 @@ export interface DateTimeScalarConfig
   name: 'DateTime'
 }
 
-export interface IResolvers<Context = ContextType> {
-  Query?: QueryResolvers.Resolvers<Context>
-  Organizer?: OrganizerResolvers.Resolvers<Context>
-  TwitterAccount?: TwitterAccountResolvers.Resolvers<Context>
-  Event?: EventResolvers.Resolvers<Context>
-  EventVenue?: EventVenueResolvers.Resolvers<Context>
-  Talk?: TalkResolvers.Resolvers<Context>
-  Speaker?: SpeakerResolvers.Resolvers<Context>
+export type IResolvers<TContext = ContextType> = {
+  Query?: QueryResolvers.Resolvers<TContext>
+  Organizer?: OrganizerResolvers.Resolvers<TContext>
+  TwitterAccount?: TwitterAccountResolvers.Resolvers<TContext>
+  Event?: EventResolvers.Resolvers<TContext>
+  EventVenue?: EventVenueResolvers.Resolvers<TContext>
+  Talk?: TalkResolvers.Resolvers<TContext>
+  Speaker?: SpeakerResolvers.Resolvers<TContext>
   DateTime?: GraphQLScalarType
-}
+} & { [typeName: string]: never }
 
-export interface IDirectiveResolvers<Result> {
+export type IDirectiveResolvers<Result> = {
   skip?: SkipDirectiveResolver<Result>
   include?: IncludeDirectiveResolver<Result>
   deprecated?: DeprecatedDirectiveResolver<Result>
-}
+} & { [directiveName: string]: never }

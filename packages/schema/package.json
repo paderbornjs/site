@@ -8,11 +8,13 @@
   },
   "devDependencies": {
     "graphql": "^14.1.1",
-    "graphql-code-generator": "^0.16.1",
-    "graphql-codegen-add": "^0.16.1",
-    "graphql-codegen-typescript-client": "^0.16.1",
-    "graphql-codegen-typescript-common": "^0.16.1",
-    "graphql-codegen-typescript-resolvers": "^0.16.1",
-    "graphql-codegen-typescript-server": "^0.16.1"
-  }
+    "graphql-code-generator": "^0.18.0",
+    "graphql-codegen-add": "^0.18.0",
+    "graphql-codegen-typescript-client": "^0.18.0",
+    "graphql-codegen-typescript-common": "^0.18.0",
+    "graphql-codegen-typescript-react-apollo": "^0.18.0",
+    "graphql-codegen-typescript-resolvers": "^0.18.0",
+    "graphql-codegen-typescript-server": "^0.18.0"
+  },
+  "dependencies": {}
 }

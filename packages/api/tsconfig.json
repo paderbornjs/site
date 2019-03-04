@@ -3,7 +3,7 @@
     "target": "es5",
     "lib": [
       "es2017",
-      "esnext.asynciterable"
+      "esnext.asynciterable",
     ],
     "module": "commonjs",
     "moduleResolution": "node",

@@ -1,7 +1,7 @@
-schema: schema.graphql
 overwrite: true
 generates:
   ../api/src/typings/generated.d.ts:
+    schema: schema.graphql
     config:
       contextType: ../utils/createContext#ContextType
     plugins:
@@ -13,8 +13,13 @@ generates:
       - typescript-common
       - typescript-server
       - typescript-resolvers
-  ../client/src/typings/generated.d.ts:
+  ../client/src/typings/generated.d.tsx:
+    schema: schema.graphql
+    documents: ../client/src/**/*.graphql
+    config:
+      noNamespaces: true
     plugins:
       - add: *header
       - typescript-common
       - typescript-client
+      - typescript-react-apollo
