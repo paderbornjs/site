@@ -34,7 +34,7 @@ const client = new ApolloClient({
   ]),
 })
 
-const App: React.SFC = () => (
+const App: React.FunctionComponent = () => (
   <React.StrictMode>
     <GlobalStyle />
     <ApolloProvider client={client}>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-interface ButtonProps {
+interface Props {
   text: string
 }
 
-const Button: React.SFC<ButtonProps> = ({ text }) => {
+const Button: React.FunctionComponent<Props> = ({ text }) => {
   const [toggled, setToggled] = useState(false)
   const handleClick = () => setToggled(toggled => !toggled)
 

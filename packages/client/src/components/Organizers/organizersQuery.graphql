@@ -1,0 +1,10 @@
+query OrganizersQuery {
+  organizers {
+    name
+    description
+    twitter {
+      name
+      profileImageUrl
+    }
+  }
+}

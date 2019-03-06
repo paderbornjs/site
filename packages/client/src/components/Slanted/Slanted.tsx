@@ -20,13 +20,13 @@ export type SlantValue =
   | 7
   | 8
 
-export interface SlantedProps {
+export interface Props {
   background?: string
   slantBottom?: SlantValue
   slantTop?: SlantValue
 }
 
-const Slanted: React.SFC<SlantedProps> = ({
+const Slanted: React.FunctionComponent<Props> = ({
   background,
   children,
   slantBottom,

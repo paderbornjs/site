@@ -16,7 +16,7 @@ const organizersResolver: QueryResolvers.OrganizersResolver = async (
     description: user.description,
     twitter: {
       name: user.screen_name,
-      profileImageUrl: user.profile_image_url_https,
+      profileImageUrl: user.profile_image_url_https.replace(/_normal/, ''),
     },
   }))
 }

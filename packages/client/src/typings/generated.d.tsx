@@ -79,6 +79,32 @@ export type EventsQuerySpeaker = {
   avatarUrl: string
 }
 
+export type OrganizersQueryVariables = {}
+
+export type OrganizersQueryQuery = {
+  __typename?: 'Query'
+
+  organizers: OrganizersQueryOrganizers[]
+}
+
+export type OrganizersQueryOrganizers = {
+  __typename?: 'Organizer'
+
+  name: string
+
+  description: string
+
+  twitter: OrganizersQueryTwitter
+}
+
+export type OrganizersQueryTwitter = {
+  __typename?: 'TwitterAccount'
+
+  name: string
+
+  profileImageUrl: string
+}
+
 import gql from 'graphql-tag'
 import * as React from 'react'
 import * as ReactApollo from 'react-apollo'
@@ -150,4 +176,51 @@ export function EventsQueryHOC<TProps, TChildProps = any>(
     EventsQueryVariables,
     EventsQueryProps<TChildProps>
   >(EventsQueryDocument, operationOptions)
+}
+export const OrganizersQueryDocument = gql`
+  query OrganizersQuery {
+    organizers {
+      name
+      description
+      twitter {
+        name
+        profileImageUrl
+      }
+    }
+  }
+`
+export class OrganizersQueryComponent extends React.Component<
+  Partial<
+    ReactApollo.QueryProps<OrganizersQueryQuery, OrganizersQueryVariables>
+  >
+> {
+  render() {
+    return (
+      <ReactApollo.Query<OrganizersQueryQuery, OrganizersQueryVariables>
+        query={OrganizersQueryDocument}
+        {...(this as any)['props'] as any}
+      />
+    )
+  }
+}
+export type OrganizersQueryProps<TChildProps = any> = Partial<
+  ReactApollo.DataProps<OrganizersQueryQuery, OrganizersQueryVariables>
+> &
+  TChildProps
+export function OrganizersQueryHOC<TProps, TChildProps = any>(
+  operationOptions:
+    | ReactApollo.OperationOption<
+        TProps,
+        OrganizersQueryQuery,
+        OrganizersQueryVariables,
+        OrganizersQueryProps<TChildProps>
+      >
+    | undefined
+) {
+  return ReactApollo.graphql<
+    TProps,
+    OrganizersQueryQuery,
+    OrganizersQueryVariables,
+    OrganizersQueryProps<TChildProps>
+  >(OrganizersQueryDocument, operationOptions)
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import Slanted from '../Slanted/Slanted'
 import { Headline, Logo, LogoContainer, Punchline } from './AppHeader.style'
 
-const AppHeader: React.SFC = () => (
+const AppHeader: React.FunctionComponent = () => (
   <Slanted>
     <LogoContainer>
       <Headline>Paderborn</Headline>

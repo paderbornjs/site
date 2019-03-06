@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-// import UpcomingEvent from '../UpcomingEvent/UpcomingEvent'
 import { EventsQueryComponent } from '../../typings/generated.d'
 // import AnimatedSection from '../AnimatedSection/AnimatedSection'
-import Slanted, { SlantedProps } from '../Slanted/Slanted'
+import Slanted, { Props as SlantedProps } from '../Slanted/Slanted'
+import Event from './Event'
 
-class EventsSection extends Component<SlantedProps> {
+class Events extends Component<SlantedProps> {
   public render() {
     return (
       <Slanted
@@ -21,26 +21,39 @@ class EventsSection extends Component<SlantedProps> {
               upcomingTalks: [],
             },
           }) => {
-            return (
-              <>events</>
-              // <AnimatedSection isLoading={loading} delayLoading={1000}>
-              //   {upcomingEvents.length ? (
-              //     <UpcomingEvent
-              //       event={upcomingEvents[0]}
-              //       talks={upcomingTalks}
-              //       // talks={upcomingTalks.filter(
-              //       //   talk =>
-              //       //     new Date(talk.date).getUTCDate() ===
-              //       //     new Date(upcomingEvents[0].date).getUTCDate()
-              //       // )}
-              //     />
-              //   ) : error ? (
-              //     error.message
-              //   ) : (
-              //     ''
-              //   )}
-              // </AnimatedSection>
+            return upcomingEvents.length ? (
+              <Event
+                event={upcomingEvents[0]}
+                talks={upcomingTalks}
+                // talks={upcomingTalks.filter(
+                //   talk =>
+                //     new Date(talk.date).getUTCDate() ===
+                //     new Date(upcomingEvents[0].date).getUTCDate()
+                // )}
+              />
+            ) : error ? (
+              error.message
+            ) : (
+              ''
             )
+
+            // <AnimatedSection isLoading={loading} delayLoading={1000}>
+            //   {upcomingEvents.length ? (
+            //     <UpcomingEvent
+            //       event={upcomingEvents[0]}
+            //       talks={upcomingTalks}
+            //       // talks={upcomingTalks.filter(
+            //       //   talk =>
+            //       //     new Date(talk.date).getUTCDate() ===
+            //       //     new Date(upcomingEvents[0].date).getUTCDate()
+            //       // )}
+            //     />
+            //   ) : error ? (
+            //     error.message
+            //   ) : (
+            //     ''
+            //   )}
+            // </AnimatedSection>
           }}
         </EventsQueryComponent>
       </Slanted>
@@ -48,4 +61,4 @@ class EventsSection extends Component<SlantedProps> {
   }
 }
 
-export default EventsSection
+export default Events

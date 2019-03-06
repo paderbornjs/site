@@ -30,7 +30,6 @@ if (isDevEnvironment) {
       Organizer: () => ({
         name: casual.full_name,
       }),
-      DateTime: () => casual.date('YYYY-MM-DDTHH:mm:ss.000Z'),
     },
     preserveResolvers: true,
   })

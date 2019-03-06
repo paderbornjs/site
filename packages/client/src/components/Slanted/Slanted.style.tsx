@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 import { background } from '../../style/colors'
-import { SlantedProps, SlantValue } from './Slanted'
+import { Props as SlantedProps, SlantValue } from './Slanted'
 
 export const Inner = styled.div`
   max-width: 100rem;
