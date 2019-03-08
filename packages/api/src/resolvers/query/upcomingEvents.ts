@@ -9,6 +9,7 @@ const upcomingEventsResolver: QueryResolvers.UpcomingEventsResolver = async (
   const meetupEvents = await ctx.meetupService.fetchEventsByStatus('upcoming')
 
   return meetupEvents.map(event => ({
+    talks: [],
     date: new Date(event.time),
     goingCount: event.yes_rsvp_count,
     url: event.link,

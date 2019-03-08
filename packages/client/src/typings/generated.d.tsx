@@ -17,8 +17,6 @@ export type EventsQueryQuery = {
   __typename?: 'Query'
 
   upcomingEvents: EventsQueryUpcomingEvents[]
-
-  upcomingTalks: EventsQueryUpcomingTalks[]
 }
 
 export type EventsQueryUpcomingEvents = {
@@ -31,6 +29,8 @@ export type EventsQueryUpcomingEvents = {
   url: string
 
   venue: EventsQueryVenue
+
+  talks: EventsQueryTalks[]
 }
 
 export type EventsQueryVenue = {
@@ -49,7 +49,7 @@ export type EventsQueryVenue = {
   street: string
 }
 
-export type EventsQueryUpcomingTalks = {
+export type EventsQueryTalks = {
   __typename?: 'Talk'
 
   title: string
@@ -108,6 +108,7 @@ export type OrganizersQueryTwitter = {
 import gql from 'graphql-tag'
 import * as React from 'react'
 import * as ReactApollo from 'react-apollo'
+import * as ReactApolloHooks from 'react-apollo-hooks'
 
 // ====================================================
 // Components
@@ -127,20 +128,20 @@ export const EventsQueryDocument = gql`
         name
         street
       }
-    }
-    upcomingTalks {
-      title
-      description
-      date
-      speaker {
-        name
-        occupation
-        socialName
-        socialUrl
-        avatarUrl
+      talks {
+        title
+        description
+        date
+        speaker {
+          name
+          occupation
+          socialName
+          socialUrl
+          avatarUrl
+        }
+        isLightningTalk
+        labels
       }
-      isLightningTalk
-      labels
     }
   }
 `
@@ -176,6 +177,14 @@ export function EventsQueryHOC<TProps, TChildProps = any>(
     EventsQueryVariables,
     EventsQueryProps<TChildProps>
   >(EventsQueryDocument, operationOptions)
+}
+export function useEventsQuery(
+  baseOptions?: ReactApolloHooks.QueryHookOptions<EventsQueryVariables>
+) {
+  return ReactApolloHooks.useQuery<EventsQueryQuery, EventsQueryVariables>(
+    EventsQueryDocument,
+    baseOptions
+  )
 }
 export const OrganizersQueryDocument = gql`
   query OrganizersQuery {
@@ -223,4 +232,12 @@ export function OrganizersQueryHOC<TProps, TChildProps = any>(
     OrganizersQueryVariables,
     OrganizersQueryProps<TChildProps>
   >(OrganizersQueryDocument, operationOptions)
+}
+export function useOrganizersQuery(
+  baseOptions?: ReactApolloHooks.QueryHookOptions<OrganizersQueryVariables>
+) {
+  return ReactApolloHooks.useQuery<
+    OrganizersQueryQuery,
+    OrganizersQueryVariables
+  >(OrganizersQueryDocument, baseOptions)
 }

@@ -16,6 +16,7 @@ type Event {
   goingCount: Int!
   url: String!
   venue: EventVenue!
+  talks: [Talk!]!
 }
 
 type EventVenue {
@@ -47,5 +48,4 @@ type Speaker {
 type Query {
   organizers: [Organizer!]!
   upcomingEvents: [Event!]!
-  upcomingTalks: [Talk!]!
 }

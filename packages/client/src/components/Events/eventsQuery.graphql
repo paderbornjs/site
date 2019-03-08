@@ -11,19 +11,19 @@ query EventsQuery {
       name
       street
     }
-  }
-  upcomingTalks {
-    title
-    description
-    date
-    speaker {
-      name
-      occupation
-      socialName
-      socialUrl
-      avatarUrl
+    talks {
+      title
+      description
+      date
+      speaker {
+        name
+        occupation
+        socialName
+        socialUrl
+        avatarUrl
+      }
+      isLightningTalk
+      labels
     }
-    isLightningTalk
-    labels
   }
 }

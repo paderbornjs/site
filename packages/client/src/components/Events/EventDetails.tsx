@@ -1,10 +1,7 @@
 import React from 'react'
 import Markdown from 'react-markdown'
 import styled from 'styled-components/macro'
-import {
-  EventsQueryUpcomingEvents,
-  EventsQueryUpcomingTalks,
-} from '../../typings/generated.d'
+import { EventsQueryUpcomingEvents } from '../../typings/generated.d'
 import Link from '../Link'
 
 const Description = styled(Markdown)`
@@ -138,7 +135,6 @@ const Slot = styled.li`
 export interface EventProps {
   event: EventsQueryUpcomingEvents
   slotCount?: number
-  talks: EventsQueryUpcomingTalks[]
 }
 
 interface Slot {
@@ -161,10 +157,9 @@ const LinkRenderer: React.FunctionComponent<LinkRendererProps> = props => (
 )
 
 // @todo free slot if less than 2 talks
-const Event: React.FunctionComponent<EventProps> = ({
-  event: { date, goingCount, url },
+const EventDetails: React.FunctionComponent<EventProps> = ({
+  event: { date, goingCount, url, talks },
   slotCount = 2,
-  talks,
 }) => {
   const slots: Slot[] = talks.map(talk => ({
     component: (
@@ -201,7 +196,7 @@ const Event: React.FunctionComponent<EventProps> = ({
   }
 
   return (
-    <React.Fragment>
+    <li>
       <div data-underline="transparent">
         Next Meetup on{' '}
         <Emphasize>
@@ -227,8 +222,8 @@ const Event: React.FunctionComponent<EventProps> = ({
           <Slot key={i}>{slot.component}</Slot>
         ))}
       </Slots>
-    </React.Fragment>
+    </li>
   )
 }
 
-export default Event
+export default EventDetails

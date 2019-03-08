@@ -1,4 +1,5 @@
-import express = require('express')
+import express from 'express'
+import EventTalksLoader from '../loaders/EventTalksLoader'
 import GithubService from '../services/GithubService'
 import MeetupService from '../services/MeetupService'
 import TwitterService from '../services/TwitterService'
@@ -10,7 +11,7 @@ export interface ContextCallbackParams {
 }
 
 export interface ContextType {
-  githubService: GithubService
+  eventTalksLoader: EventTalksLoader
   meetupService: MeetupService
   queryString: string
   twitterService: TwitterService
@@ -24,7 +25,10 @@ export default function createContext(
   const meetupKey: string = getEnvironmentVariable('MEETUP_KEY')
 
   return {
-    githubService: new GithubService(),
+    eventTalksLoader: new EventTalksLoader(
+      { batch: true },
+      new GithubService()
+    ),
     meetupService: new MeetupService(meetupKey),
     queryString: params.req.body.query,
     twitterService: new TwitterService(twitterApiKey, twitterApiSecret),

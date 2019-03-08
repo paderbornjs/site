@@ -18,6 +18,7 @@ generates:
     documents: ../client/src/**/*.graphql
     config:
       noNamespaces: true
+      withHooks: true
     plugins:
       - add: *header
       - typescript-common

@@ -13,9 +13,6 @@ export interface GithubIssue {
   }
 }
 
-type GithubIssueWithMilestone = GithubIssue &
-  Required<Pick<GithubIssue, 'milestone'>>
-
 export default class GithubService {
   public static BASE_URL = 'https://api.github.com/repos/paderbornjs/talks'
 
@@ -32,24 +29,5 @@ export default class GithubService {
     }
 
     return await (await responsePromise).clone().json()
-  }
-
-  public filterIssuesByFutureMilestone(
-    issues: GithubIssue[]
-  ): GithubIssueWithMilestone[] {
-    return issues.filter(issue => {
-      if (!issue.milestone) {
-        return false
-      }
-
-      const now = new Date()
-      const milestone = new Date(issue.milestone.due_on)
-
-      return (
-        now.getUTCFullYear() <= milestone.getUTCFullYear() &&
-        now.getUTCMonth() <= milestone.getUTCMonth() &&
-        now.getUTCDate() <= milestone.getUTCDate()
-      )
-    }) as GithubIssueWithMilestone[]
   }
 }

@@ -19,8 +19,6 @@ export interface Query {
   organizers: Organizer[]
 
   upcomingEvents: Event[]
-
-  upcomingTalks: Talk[]
 }
 
 export interface Organizer {
@@ -45,6 +43,8 @@ export interface Event {
   url: string
 
   venue: EventVenue
+
+  talks: Talk[]
 }
 
 export interface EventVenue {
@@ -153,8 +153,6 @@ export namespace QueryResolvers {
     organizers?: OrganizersResolver<Organizer[], TypeParent, TContext>
 
     upcomingEvents?: UpcomingEventsResolver<Event[], TypeParent, TContext>
-
-    upcomingTalks?: UpcomingTalksResolver<Talk[], TypeParent, TContext>
   }
 
   export type OrganizersResolver<
@@ -164,11 +162,6 @@ export namespace QueryResolvers {
   > = Resolver<R, Parent, TContext>
   export type UpcomingEventsResolver<
     R = Event[],
-    Parent = {},
-    TContext = ContextType
-  > = Resolver<R, Parent, TContext>
-  export type UpcomingTalksResolver<
-    R = Talk[],
     Parent = {},
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
@@ -231,6 +224,8 @@ export namespace EventResolvers {
     url?: UrlResolver<string, TypeParent, TContext>
 
     venue?: VenueResolver<EventVenue, TypeParent, TContext>
+
+    talks?: TalksResolver<Talk[], TypeParent, TContext>
   }
 
   export type DateResolver<
@@ -250,6 +245,11 @@ export namespace EventResolvers {
   > = Resolver<R, Parent, TContext>
   export type VenueResolver<
     R = EventVenue,
+    Parent = Event,
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
+  export type TalksResolver<
+    R = Talk[],
     Parent = Event,
     TContext = ContextType
   > = Resolver<R, Parent, TContext>

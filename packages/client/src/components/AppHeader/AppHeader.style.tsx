@@ -13,12 +13,13 @@ export const Logo = styled(JavaScriptLogo)`
   }
 `
 
-export const LogoContainer = styled.header`
+export const Container = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 0 2em 0;
   color: #12223c;
+  margin: 40px 0 0 0;
 `
 
 export const Headline = styled.h1`

@@ -1,7 +1,21 @@
 import posed from 'react-pose'
 import styled from 'styled-components/macro'
 
-export const List = styled.div`
+const AnimatedList = posed.ul({
+  enter: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      opacity: { ease: [0.4, 0.0, 0.2, 1], duration: 150 },
+      scale: { ease: [0.0, 0.0, 0.2, 1], duration: 150 },
+    },
+    staggerChildren: 500,
+  },
+  exit: { opacity: 0, scale: 0.95 },
+  initialPose: 'exit',
+})
+
+export const List = styled(AnimatedList)`
   margin: 0 -1.5rem;
   padding: 0;
 
@@ -10,23 +24,7 @@ export const List = styled.div`
   }
 `
 
-export const ListItem = styled(
-  posed.article({
-    enter: {
-      delay: (props: any) => props.itemIndex * 50,
-      opacity: 1,
-      scale: 1,
-      transition: {
-        opacity: { ease: [0.4, 0.0, 0.2, 1], duration: 150 },
-        scale: { ease: [0.0, 0.0, 0.2, 1], duration: 150 },
-      },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.95,
-    },
-  })
-)<{ itemIndex: number }>`
+export const ListItem = styled.li<{ itemIndex: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;

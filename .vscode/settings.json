@@ -5,6 +5,7 @@
   },
   "gitlens.currentLine.enabled": false,
   "gitlens.mode.statusBar.enabled": true,
+  "editor.snippetSuggestions": "top",
   "eslint.options": {
     "configFile": ".eslintrc.js"
   },
