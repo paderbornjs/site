@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { PoseGroup } from 'react-pose'
 import { Flex } from 'rebass'
 import useImageLoader from '../../hooks/useImageLoader'
@@ -9,12 +9,13 @@ import { List, ListItem } from './OrganizerList.style'
 
 const OrganizerList: React.FunctionComponent = () => {
   const { data, error, loading: queryLoading } = useOrganizersQuery()
-
-  const imagesLoading = useImageLoader(
-    data && data.organizers
-      ? data.organizers.map(o => o.twitter.profileImageUrl)
-      : []
-  )
+  const [imageUrls, setImageUrls] = useState<string[]>([])
+  const imagesLoading = useImageLoader(imageUrls)
+  useEffect(() => {
+    if (data && data.organizers) {
+      setImageUrls(data.organizers.map(o => o.twitter.profileImageUrl))
+    }
+  }, [data])
 
   if (error) {
     return <>{error.message}</>

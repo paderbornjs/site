@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Flex } from 'rebass'
 import useImageLoader from '../../hooks/useImageLoader'
 import { useEventsQuery } from '../../typings/generated.d'
@@ -7,14 +7,18 @@ import EventsList from './EventsList'
 
 export const Events: React.FunctionComponent = () => {
   const { data, error, loading: queryLoading } = useEventsQuery()
+  const [imageUrls, setImageUrls] = useState<string[]>([])
+  const imagesLoading = useImageLoader(imageUrls)
 
-  const imagesLoading = useImageLoader(
-    data && data.upcomingEvents
-      ? data.upcomingEvents
+  useEffect(() => {
+    if (data && data.upcomingEvents) {
+      setImageUrls(
+        data.upcomingEvents
           .map(event => event.talks.map(talk => talk.speaker.avatarUrl))
           .flat()
-      : []
-  )
+      )
+    }
+  }, [data])
 
   if (error) {
     return <>{error.message}</>
