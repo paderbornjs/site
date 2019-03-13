@@ -11,7 +11,7 @@ export default {
   },
 
   // type resolvers
-  Event: {
+  UpcomingEvent: {
     talks: eventTalksResolver,
   },
 

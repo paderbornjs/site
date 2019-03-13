@@ -20,7 +20,7 @@ export type EventsQueryQuery = {
 }
 
 export type EventsQueryUpcomingEvents = {
-  __typename?: 'Event'
+  __typename?: 'UpcomingEvent'
 
   date: DateTime
 
@@ -94,13 +94,7 @@ export type OrganizersQueryOrganizers = {
 
   description: string
 
-  twitter: OrganizersQueryTwitter
-}
-
-export type OrganizersQueryTwitter = {
-  __typename?: 'TwitterAccount'
-
-  name: string
+  twitterName: string
 
   profileImageUrl: string
 }
@@ -191,10 +185,8 @@ export const OrganizersQueryDocument = gql`
     organizers {
       name
       description
-      twitter {
-        name
-        profileImageUrl
-      }
+      twitterName
+      profileImageUrl
     }
   }
 `

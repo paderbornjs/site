@@ -1,17 +1,15 @@
 scalar DateTime
 
+"A meetup organizer"
 type Organizer {
   description: String!
   name: String!
-  twitter: TwitterAccount!
-}
-
-type TwitterAccount {
-  name: String!
   profileImageUrl: String!
+  twitterName: String!
 }
 
-type Event {
+"An upcoming meetup event"
+type UpcomingEvent {
   date: DateTime!
   goingCount: Int!
   url: String!
@@ -19,6 +17,7 @@ type Event {
   talks: [Talk!]!
 }
 
+"An event venue"
 type EventVenue {
   city: String!
   country: String!
@@ -28,6 +27,7 @@ type EventVenue {
   street: String!
 }
 
+"A talk"
 type Talk {
   date: DateTime!
   description: String!
@@ -37,6 +37,7 @@ type Talk {
   title: String!
 }
 
+"A speaker"
 type Speaker {
   avatarUrl: String!
   name: String!
@@ -45,7 +46,10 @@ type Speaker {
   socialUrl: String
 }
 
+"The query root of Paderborn.js GraphQL interface"
 type Query {
+  "Return a list of meetup organizers"
   organizers: [Organizer!]!
-  upcomingEvents: [Event!]!
+  "Return a list of upcoming events"
+  upcomingEvents: [UpcomingEvent!]!
 }

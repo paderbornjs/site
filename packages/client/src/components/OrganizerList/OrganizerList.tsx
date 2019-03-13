@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PoseGroup } from 'react-pose'
 import { Flex } from 'rebass'
-import useImageLoader from '../../hooks/useImageLoader'
+import useImageLoadingState from '../../hooks/useImageLoadingState'
 import { useOrganizersQuery } from '../../typings/generated.d'
 import LoadingIndicator from '../LoadingIndicator'
 import OrganizerCard from '../OrganizerCard'
@@ -10,10 +10,11 @@ import { List, ListItem } from './OrganizerList.style'
 const OrganizerList: React.FunctionComponent = () => {
   const { data, error, loading: queryLoading } = useOrganizersQuery()
   const [imageUrls, setImageUrls] = useState<string[]>([])
-  const imagesLoading = useImageLoader(imageUrls)
+  const imagesLoading = useImageLoadingState(imageUrls)
+
   useEffect(() => {
     if (data && data.organizers) {
-      setImageUrls(data.organizers.map(o => o.twitter.profileImageUrl))
+      setImageUrls(data.organizers.map(o => o.profileImageUrl))
     }
   }, [data])
 

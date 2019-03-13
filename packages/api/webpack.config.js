@@ -1,8 +1,19 @@
 const path = require('path')
 const LicensePlugin = require('webpack-license-plugin')
+const NodemonPlugin = require('nodemon-webpack-plugin')
 
 const inProduction = process.env.NODE_ENV === 'production'
+const inDevelopment = process.env.NODE_ENV === 'development'
+
 const plugins = []
+
+if (inDevelopment) {
+  plugins.push(
+    new NodemonPlugin({
+      // script: './build/api.js',
+    })
+  )
+}
 
 if (inProduction) {
   plugins.push(
@@ -40,6 +51,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'api.js',
   },
+  devtool: 'source-map',
   resolve: {
     extensions: ['.mjs', '.js', '.ts', '.gql', '.graphql'],
   },

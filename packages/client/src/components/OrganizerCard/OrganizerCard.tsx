@@ -152,11 +152,7 @@ const Svg = styled.svg<{ itemIndex: number }>`
 
 const OrganizerCard: React.FunctionComponent<Props> = ({
   itemIndex,
-  organizer: {
-    name,
-    description,
-    twitter: { name: handle, profileImageUrl },
-  },
+  organizer: { name, description, twitterName, profileImageUrl },
 }) => {
   return (
     <>
@@ -213,9 +209,9 @@ const OrganizerCard: React.FunctionComponent<Props> = ({
       <Text itemIndex={itemIndex}>
         <Name>{name}</Name>
         <LinkWrapper>
-          <Link href={`http://twitter.com/${handle}`}>
+          <Link href={`http://twitter.com/${twitterName}`}>
             <TwitterLogo />
-            {handle}
+            {twitterName}
           </Link>
         </LinkWrapper>
         <p>{description}</p>

@@ -14,10 +14,8 @@ const organizersResolver: QueryResolvers.OrganizersResolver = async (
   return twitterUsers.map(user => ({
     name: user.name,
     description: user.description,
-    twitter: {
-      name: user.screen_name,
-      profileImageUrl: user.profile_image_url_https.replace(/_normal/, ''),
-    },
+    twitterName: user.screen_name,
+    profileImageUrl: user.profile_image_url_https.replace(/_normal/, ''),
   }))
 }
 

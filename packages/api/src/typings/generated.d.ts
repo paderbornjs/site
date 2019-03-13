@@ -15,27 +15,27 @@ export type DateTime = any
 // Types
 // ====================================================
 
+/** The query root of Paderborn.js GraphQL interface */
 export interface Query {
+  /** Return a list of meetup organizers */
   organizers: Organizer[]
-
-  upcomingEvents: Event[]
+  /** Return a list of upcoming events */
+  upcomingEvents: UpcomingEvent[]
 }
 
+/** A meetup organizer */
 export interface Organizer {
   description: string
 
   name: string
 
-  twitter: TwitterAccount
-}
-
-export interface TwitterAccount {
-  name: string
-
   profileImageUrl: string
+
+  twitterName: string
 }
 
-export interface Event {
+/** An upcoming meetup event */
+export interface UpcomingEvent {
   date: DateTime
 
   goingCount: number
@@ -47,6 +47,7 @@ export interface Event {
   talks: Talk[]
 }
 
+/** An event venue */
 export interface EventVenue {
   city: string
 
@@ -61,6 +62,7 @@ export interface EventVenue {
   street: string
 }
 
+/** A talk */
 export interface Talk {
   date: DateTime
 
@@ -75,6 +77,7 @@ export interface Talk {
   title: string
 }
 
+/** A speaker */
 export interface Speaker {
   avatarUrl: string
 
@@ -148,11 +151,17 @@ export type DirectiveResolverFn<TResult, TArgs = {}, TContext = {}> = (
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>
 
+/** The query root of Paderborn.js GraphQL interface */
 export namespace QueryResolvers {
   export interface Resolvers<TContext = ContextType, TypeParent = {}> {
+    /** Return a list of meetup organizers */
     organizers?: OrganizersResolver<Organizer[], TypeParent, TContext>
-
-    upcomingEvents?: UpcomingEventsResolver<Event[], TypeParent, TContext>
+    /** Return a list of upcoming events */
+    upcomingEvents?: UpcomingEventsResolver<
+      UpcomingEvent[],
+      TypeParent,
+      TContext
+    >
   }
 
   export type OrganizersResolver<
@@ -161,19 +170,21 @@ export namespace QueryResolvers {
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
   export type UpcomingEventsResolver<
-    R = Event[],
+    R = UpcomingEvent[],
     Parent = {},
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
 }
-
+/** A meetup organizer */
 export namespace OrganizerResolvers {
   export interface Resolvers<TContext = ContextType, TypeParent = Organizer> {
     description?: DescriptionResolver<string, TypeParent, TContext>
 
     name?: NameResolver<string, TypeParent, TContext>
 
-    twitter?: TwitterResolver<TwitterAccount, TypeParent, TContext>
+    profileImageUrl?: ProfileImageUrlResolver<string, TypeParent, TContext>
+
+    twitterName?: TwitterNameResolver<string, TypeParent, TContext>
   }
 
   export type DescriptionResolver<
@@ -186,37 +197,23 @@ export namespace OrganizerResolvers {
     Parent = Organizer,
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
-  export type TwitterResolver<
-    R = TwitterAccount,
+  export type ProfileImageUrlResolver<
+    R = string,
+    Parent = Organizer,
+    TContext = ContextType
+  > = Resolver<R, Parent, TContext>
+  export type TwitterNameResolver<
+    R = string,
     Parent = Organizer,
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
 }
-
-export namespace TwitterAccountResolvers {
+/** An upcoming meetup event */
+export namespace UpcomingEventResolvers {
   export interface Resolvers<
     TContext = ContextType,
-    TypeParent = TwitterAccount
+    TypeParent = UpcomingEvent
   > {
-    name?: NameResolver<string, TypeParent, TContext>
-
-    profileImageUrl?: ProfileImageUrlResolver<string, TypeParent, TContext>
-  }
-
-  export type NameResolver<
-    R = string,
-    Parent = TwitterAccount,
-    TContext = ContextType
-  > = Resolver<R, Parent, TContext>
-  export type ProfileImageUrlResolver<
-    R = string,
-    Parent = TwitterAccount,
-    TContext = ContextType
-  > = Resolver<R, Parent, TContext>
-}
-
-export namespace EventResolvers {
-  export interface Resolvers<TContext = ContextType, TypeParent = Event> {
     date?: DateResolver<DateTime, TypeParent, TContext>
 
     goingCount?: GoingCountResolver<number, TypeParent, TContext>
@@ -230,31 +227,31 @@ export namespace EventResolvers {
 
   export type DateResolver<
     R = DateTime,
-    Parent = Event,
+    Parent = UpcomingEvent,
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
   export type GoingCountResolver<
     R = number,
-    Parent = Event,
+    Parent = UpcomingEvent,
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
   export type UrlResolver<
     R = string,
-    Parent = Event,
+    Parent = UpcomingEvent,
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
   export type VenueResolver<
     R = EventVenue,
-    Parent = Event,
+    Parent = UpcomingEvent,
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
   export type TalksResolver<
     R = Talk[],
-    Parent = Event,
+    Parent = UpcomingEvent,
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
 }
-
+/** An event venue */
 export namespace EventVenueResolvers {
   export interface Resolvers<TContext = ContextType, TypeParent = EventVenue> {
     city?: CityResolver<string, TypeParent, TContext>
@@ -301,7 +298,7 @@ export namespace EventVenueResolvers {
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
 }
-
+/** A talk */
 export namespace TalkResolvers {
   export interface Resolvers<TContext = ContextType, TypeParent = Talk> {
     date?: DateResolver<DateTime, TypeParent, TContext>
@@ -348,7 +345,7 @@ export namespace TalkResolvers {
     TContext = ContextType
   > = Resolver<R, Parent, TContext>
 }
-
+/** A speaker */
 export namespace SpeakerResolvers {
   export interface Resolvers<TContext = ContextType, TypeParent = Speaker> {
     avatarUrl?: AvatarUrlResolver<string, TypeParent, TContext>
@@ -430,8 +427,7 @@ export interface DateTimeScalarConfig
 export type IResolvers<TContext = ContextType> = {
   Query?: QueryResolvers.Resolvers<TContext>
   Organizer?: OrganizerResolvers.Resolvers<TContext>
-  TwitterAccount?: TwitterAccountResolvers.Resolvers<TContext>
-  Event?: EventResolvers.Resolvers<TContext>
+  UpcomingEvent?: UpcomingEventResolvers.Resolvers<TContext>
   EventVenue?: EventVenueResolvers.Resolvers<TContext>
   Talk?: TalkResolvers.Resolvers<TContext>
   Speaker?: SpeakerResolvers.Resolvers<TContext>

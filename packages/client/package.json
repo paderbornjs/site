@@ -3,10 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "start": "yarn run dev",
+    "dev": "npm-run-all dev:kill dev:watch",
+    "dev:kill": "kill-port 3000",
+    "dev:watch": "cross-env PORT=3000 BROWSER=none rescripts start",
+    "build": "rescripts build",
     "lint": "eslint --ext .js --ext .ts --ext .tsx src",
-    "test": "react-app-rewired test"
+    "test": "rescripts test"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.5.1",
@@ -29,6 +32,8 @@
   },
   "devDependencies": {
     "@paderbornjs/schema": "1.0.0",
+    "@rescripts/cli": "^0.0.10",
+    "@rescripts/utilities": "^0.0.5",
     "@types/jest": "^24.0.9",
     "@types/node": "^11.9.5",
     "@types/react": "^16.8.5",
@@ -41,8 +46,6 @@
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "react-app-rewire-graphql-tag": "^1.1.0",
-    "react-app-rewired": "^2.1.0",
     "webpack-bundle-analyzer": "^3.1.0"
   },
   "eslintConfig": {

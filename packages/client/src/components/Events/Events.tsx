@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Flex } from 'rebass'
-import useImageLoader from '../../hooks/useImageLoader'
+import useImageLoadingState from '../../hooks/useImageLoadingState'
 import { useEventsQuery } from '../../typings/generated.d'
 import LoadingIndicator from '../LoadingIndicator'
 import EventsList from './EventsList'
@@ -8,7 +8,7 @@ import EventsList from './EventsList'
 export const Events: React.FunctionComponent = () => {
   const { data, error, loading: queryLoading } = useEventsQuery()
   const [imageUrls, setImageUrls] = useState<string[]>([])
-  const imagesLoading = useImageLoader(imageUrls)
+  const imagesLoading = useImageLoadingState(imageUrls)
 
   useEffect(() => {
     if (data && data.upcomingEvents) {

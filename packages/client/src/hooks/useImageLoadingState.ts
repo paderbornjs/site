@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 
 const cache: { [url: string]: Promise<Event> } = {}
 
-const useImageLoader = (urls: string[]) => {
-  const [loading, setLoading] = useState(true)
+const useImageLoadingState = (urls: string[]) => {
+  const [loading, setLoading] = useState(urls.length > 0)
 
   useEffect(() => {
+    setLoading(urls.length > 0)
     if (urls.length > 0) {
       Promise.all<Event>(
         urls.map(url => {
@@ -25,4 +26,4 @@ const useImageLoader = (urls: string[]) => {
   return loading
 }
 
-export default useImageLoader
+export default useImageLoadingState
