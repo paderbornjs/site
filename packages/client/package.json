@@ -7,9 +7,19 @@
     "dev": "npm-run-all dev:kill dev:watch",
     "dev:kill": "kill-port 3000",
     "dev:watch": "cross-env PORT=3000 BROWSER=none rescripts start",
+    "precommit": "lint-staged",
     "build": "rescripts build",
     "lint": "eslint --ext .js --ext .ts --ext .tsx src",
     "test": "rescripts test"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{ts,tsx}": [
+        "eslint --fix",
+        "prettier --write",
+        "git add"
+      ]
+    }
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.5.1",
@@ -47,9 +57,6 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "webpack-bundle-analyzer": "^3.1.0"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

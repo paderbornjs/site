@@ -15,6 +15,7 @@ const HomePage: React.FunctionComponent = () => (
       <Events />
     </Slanted>
     <About />
+
     <Slanted background={darkBackground} slantTop={2} slantBottom={-1}>
       <OrganizerList />
     </Slanted>

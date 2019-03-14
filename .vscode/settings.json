@@ -35,5 +35,6 @@
       "autoFix": true
     }
   ],
+  "versionlens.showVersionLensesAtStartup": false,
   "versionlens.showDependencyStatusesAtStartup": false
 }

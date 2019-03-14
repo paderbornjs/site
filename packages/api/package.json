@@ -8,10 +8,20 @@
     "dev:kill": "kill-port 4000",
     "dev:clear": "shx rm -rf build",
     "dev:watch": "cross-env NODE_ENV=development PORT=4000 webpack --watch",
+    "precommit": "lint-staged",
     "build": "cross-env NODE_ENV=production npm-run-all build:clean build:webpack",
     "build:clean": "shx rm -rf build",
     "build:webpack": "webpack",
     "lint": "eslint --ext .js --ext .ts src"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{ts,tsx}": [
+        "eslint --fix",
+        "prettier --write",
+        "git add"
+      ]
+    }
   },
   "dependencies": {
     "apollo-server": "^2.4.0",
