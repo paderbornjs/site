@@ -12,8 +12,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lerna run --concurrency 1 --stream precommit"
+      "commit-msg": "cross-env FORCE_COLOR=1 commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "cross-env FORCE_COLOR=1 lerna run --concurrency 1 --stream precommit"
     }
   },
   "commitlint": {
