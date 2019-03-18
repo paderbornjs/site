@@ -13,7 +13,7 @@ const markerIcon = leaflet.icon({
   iconUrl: require('../AppHeader/javascript.svg'),
 })
 
-const Location: React.FunctionComponent = () => (
+const Location: React.FC = () => (
   <Slanted>
     <h5>Location</h5>
     <Map center={position} zoom={zoom} attributionControl={false}>

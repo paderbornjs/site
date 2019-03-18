@@ -9,7 +9,7 @@ import OrganizerList from '../OrganizerList'
 import Slanted from '../Slanted'
 import Sponsors from '../Sponsors'
 
-const HomePage: React.FunctionComponent = () => (
+const HomePage: React.FC = () => (
   <AppLayout>
     <Slanted background={lightBackground} slantTop={3} slantBottom={-2}>
       <Events />

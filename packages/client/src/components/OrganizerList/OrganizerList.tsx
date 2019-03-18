@@ -7,7 +7,7 @@ import LoadingIndicator from '../LoadingIndicator'
 import OrganizerCard from '../OrganizerCard'
 import { List, ListItem } from './OrganizerList.style'
 
-const OrganizerList: React.FunctionComponent = () => {
+const OrganizerList: React.FC = () => {
   const { data, error, loading: queryLoading } = useOrganizersQuery()
   const [imageUrls, setImageUrls] = useState<string[]>([])
   const imagesLoading = useImageLoadingState(imageUrls)

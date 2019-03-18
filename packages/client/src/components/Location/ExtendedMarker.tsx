@@ -1,7 +1,7 @@
 import React, { createRef, useEffect } from 'react'
 import { Marker, MarkerProps } from 'react-leaflet'
 
-const ExtendedMarker: React.FunctionComponent<MarkerProps> = props => {
+const ExtendedMarker: React.FC<MarkerProps> = props => {
   const markerRef = createRef<Marker<MarkerProps>>()
 
   useEffect(() => {

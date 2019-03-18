@@ -10,12 +10,12 @@ const ColumnWrapper = styled.div`
   }
 `
 
-const CodeOfConduct: React.FunctionComponent = () => (
+const CodeOfConduct: React.FC = () => (
   <Slanted>
     <h5>Code of Conduct</h5>
     <ColumnWrapper>
       <p>
-        This meetup's primary goal is to have an awesome, inclusive and safe
+        This meetup’s primary goal is to have an awesome, inclusive and safe
         community meetup where people meet, hang out together, chat, listen to
         talks, exchange ideas and make new friends.
       </p>

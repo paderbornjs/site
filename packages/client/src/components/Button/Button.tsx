@@ -4,7 +4,7 @@ interface Props {
   text: string
 }
 
-const Button: React.FunctionComponent<Props> = ({ text }) => {
+const Button: React.FC<Props> = ({ text }) => {
   const [toggled, setToggled] = useState(false)
   const handleClick = () => setToggled(toggled => !toggled)
 

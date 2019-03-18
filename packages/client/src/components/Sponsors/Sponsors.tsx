@@ -2,7 +2,7 @@ import React from 'react'
 import Link from '../Link/Link'
 import Slanted, { Props as SlantedProps } from '../Slanted/Slanted'
 
-const Sponsors: React.FunctionComponent<SlantedProps> = ({
+const Sponsors: React.FC<SlantedProps> = ({
   background,
   slantTop,
   slantBottom,

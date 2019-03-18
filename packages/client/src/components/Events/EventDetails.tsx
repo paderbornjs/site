@@ -142,7 +142,7 @@ interface Slot {
   free: boolean
 }
 
-const FreeSlot: React.FunctionComponent = () => (
+const FreeSlot: React.FC = () => (
   <React.Fragment>
     <Title>Free slot!</Title>
   </React.Fragment>
@@ -152,12 +152,10 @@ interface LinkRendererProps {
   href: string
 }
 
-const LinkRenderer: React.FunctionComponent<LinkRendererProps> = props => (
-  <Link {...props} />
-)
+const LinkRenderer: React.FC<LinkRendererProps> = props => <Link {...props} />
 
 // @todo free slot if less than 2 talks
-const EventDetails: React.FunctionComponent<EventProps> = ({
+const EventDetails: React.FC<EventProps> = ({
   event: { date, goingCount, url, talks },
   slotCount = 2,
 }) => {

@@ -5,7 +5,7 @@ import { useEventsQuery } from '../../typings/generated.d'
 import LoadingIndicator from '../LoadingIndicator'
 import EventsList from './EventsList'
 
-export const Events: React.FunctionComponent = () => {
+export const Events: React.FC = () => {
   const { data, error, loading: queryLoading } = useEventsQuery()
   const [imageUrls, setImageUrls] = useState<string[]>([])
   const imagesLoading = useImageLoadingState(imageUrls)

@@ -26,7 +26,7 @@ export interface Props {
   slantTop?: SlantValue
 }
 
-const Slanted: React.FunctionComponent<Props> = ({
+const Slanted: React.FC<Props> = ({
   background,
   children,
   slantBottom,

@@ -150,7 +150,7 @@ const Svg = styled.svg<{ itemIndex: number }>`
   }
 `
 
-const OrganizerCard: React.FunctionComponent<Props> = ({
+const OrganizerCard: React.FC<Props> = ({
   itemIndex,
   organizer: { name, description, twitterName, profileImageUrl },
 }) => {

@@ -5,7 +5,7 @@ interface Props {
   defer?: number
 }
 
-const LoadingIndicator: React.FunctionComponent<Props> = ({ defer = 500 }) => {
+const LoadingIndicator: React.FC<Props> = ({ defer = 500 }) => {
   const [display, setDisplay] = useState(false)
 
   useEffect(() => {

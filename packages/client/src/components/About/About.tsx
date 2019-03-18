@@ -3,7 +3,7 @@ import Link from '../Link/Link'
 import Slanted from '../Slanted/Slanted'
 import { ColumnWrapper } from './About.style'
 
-const About: React.FunctionComponent = () => (
+const About: React.FC = () => (
   <Slanted>
     <h5>What is this all about?</h5>
     <ColumnWrapper>
@@ -15,7 +15,7 @@ const About: React.FunctionComponent = () => (
       <p>
         We welcome a diverse range of topics that are related in any way to
         JavaScript and the community around it. New speakers, experienced
-        speakers, and everyone in between. If you have an idea you aren't sure
+        speakers, and everyone in between. If you have an idea you aren’t sure
         about, just reach out or add it as an issue in our{' '}
         <Link href="https://github.com/paderbornjs/talks">
           Paderborn.js talks repository

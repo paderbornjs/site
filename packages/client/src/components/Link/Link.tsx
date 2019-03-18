@@ -5,6 +5,6 @@ interface Props {
   href: string
 }
 
-const Link: React.FunctionComponent<Props> = props => <StyledLink {...props} />
+const Link: React.FC<Props> = props => <StyledLink {...props} />
 
 export default Link
