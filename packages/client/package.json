@@ -8,7 +8,9 @@
     "dev:kill": "kill-port 3000",
     "dev:watch": "cross-env PORT=3000 BROWSER=none rescripts start",
     "precommit": "lint-staged",
-    "build": "rescripts build",
+    "build": "npm-run-all build:webpack build:sizelimit",
+    "build:webpack": "rescripts build",
+    "build:sizelimit": "size-limit",
     "lint": "eslint --ext .js --ext .ts --ext .tsx src",
     "test": "rescripts test"
   },
@@ -21,6 +23,19 @@
       ]
     }
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "size-limit": [
+    {
+      "path": "build/**/*.{css,js}",
+      "webpack": false,
+      "limit": "250kb"
+    }
+  ],
   "dependencies": {
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
@@ -56,12 +71,7 @@
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "size-limit": "^0.21.1",
     "webpack-bundle-analyzer": "^3.1.0"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  }
 }
