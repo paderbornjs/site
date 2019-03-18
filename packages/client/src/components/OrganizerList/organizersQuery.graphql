@@ -1,7 +1,7 @@
 query OrganizersQuery {
   organizers {
-    name
     description
+    name
     twitterName
     profileImageUrl
   }

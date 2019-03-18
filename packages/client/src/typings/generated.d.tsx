@@ -90,9 +90,9 @@ export type OrganizersQueryQuery = {
 export type OrganizersQueryOrganizers = {
   __typename?: 'Organizer'
 
-  name: string
-
   description: string
+
+  name: string
 
   twitterName: string
 
@@ -183,8 +183,8 @@ export function useEventsQuery(
 export const OrganizersQueryDocument = gql`
   query OrganizersQuery {
     organizers {
-      name
       description
+      name
       twitterName
       profileImageUrl
     }
