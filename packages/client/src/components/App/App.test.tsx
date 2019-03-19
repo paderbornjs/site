@@ -1,3 +1,3 @@
-it('renders without crashing', () => {})
+it('is not tested', () => {})
 
 export default undefined

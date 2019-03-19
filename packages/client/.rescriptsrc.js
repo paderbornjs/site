@@ -25,6 +25,15 @@ module.exports = [
         }),
         config
       )
+
+      config = {
+        ...config,
+        performance: {
+          maxAssetSize: 250000,
+          maxEntrypointSize: 250000,
+          hints: 'warning',
+        },
+      }
     }
 
     return config

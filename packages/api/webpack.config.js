@@ -9,9 +9,7 @@ const plugins = []
 
 if (inDevelopment) {
   plugins.push(
-    new NodemonPlugin({
-      // script: './build/api.js',
-    })
+    new NodemonPlugin()
   )
 }
 
