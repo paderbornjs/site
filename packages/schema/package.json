@@ -3,18 +3,17 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "gql-gen",
-    "start": "gql-gen --watch"
+    "build": "graphql-codegen",
+    "start": "graphql-codegen --watch"
   },
   "devDependencies": {
-    "graphql": "^14.1.1",
-    "graphql-code-generator": "^0.18.0",
-    "graphql-codegen-add": "^0.18.0",
-    "graphql-codegen-typescript-client": "^0.18.0",
-    "graphql-codegen-typescript-common": "^0.18.0",
-    "graphql-codegen-typescript-react-apollo": "^0.18.0",
-    "graphql-codegen-typescript-resolvers": "^0.18.0",
-    "graphql-codegen-typescript-server": "^0.18.0"
+    "@graphql-codegen/add": "^1.0.2",
+    "@graphql-codegen/cli": "^1.0.2",
+    "@graphql-codegen/typescript": "^1.0.2",
+    "@graphql-codegen/typescript-operations": "^1.0.2",
+    "@graphql-codegen/typescript-react-apollo": "^1.0.2",
+    "@graphql-codegen/typescript-resolvers": "^1.0.2",
+    "graphql": "^14.1.1"
   },
   "dependencies": {}
 }

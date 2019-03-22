@@ -1,12 +1,12 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components/macro'
-import { OrganizersQueryOrganizers } from '../../typings/generated.d'
+import { GetOrganizersQuery } from '../../typings/generated.d'
 import Link from '../Link'
 import { LinkWrapper, Name, Text, TwitterLogo } from './OrganizerCard.style'
 
 export interface Props {
   itemIndex: number
-  organizer: OrganizersQueryOrganizers
+  organizer: GetOrganizersQuery['organizers'][0]
 }
 
 const offsetHorizontal = 4

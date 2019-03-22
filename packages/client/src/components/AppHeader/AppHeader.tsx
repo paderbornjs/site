@@ -1,9 +1,8 @@
 import React from 'react'
-import { Container, Headline, Logo } from './AppHeader.style'
+import { Container, Logo } from './AppHeader.style'
 
 const AppHeader: React.FC = () => (
   <Container>
-    <Headline>Paderborn</Headline>
     <Logo />
   </Container>
 )

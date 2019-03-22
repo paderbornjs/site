@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { PoseGroup } from 'react-pose'
 import { Flex } from 'rebass'
 import useImageLoadingState from '../../hooks/useImageLoadingState'
-import { useOrganizersQuery } from '../../typings/generated.d'
+import { useGetOrganizersQuery } from '../../typings/generated.d'
 import LoadingIndicator from '../LoadingIndicator'
 import OrganizerCard from '../OrganizerCard'
+import SectionHeadline from '../SectionHeadline'
 import { List, ListItem } from './OrganizerList.style'
 
 const OrganizerList: React.FC = () => {
-  const { data, error, loading: queryLoading } = useOrganizersQuery()
+  const { data, error, loading: queryLoading } = useGetOrganizersQuery()
   const [imageUrls, setImageUrls] = useState<string[]>([])
   const imagesLoading = useImageLoadingState(imageUrls)
 
@@ -30,6 +31,7 @@ const OrganizerList: React.FC = () => {
 
   return (
     <List>
+      <SectionHeadline element="h2">Organizers</SectionHeadline>
       <PoseGroup animateOnMount={true}>
         {data!.organizers.map((organizer, i) => (
           <ListItem key={i} itemIndex={i}>

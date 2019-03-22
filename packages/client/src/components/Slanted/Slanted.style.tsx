@@ -1,19 +1,20 @@
 import styled from 'styled-components/macro'
 import { background } from '../../style/colors'
+import spacings from '../../style/spacings'
 import { Props as SlantedProps, SlantValue } from './Slanted'
 
 export const Inner = styled.div`
-  max-width: 100rem;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 3rem;
+  padding: ${spacings[4]};
   display: flex;
   flex-direction: column;
 
   @media (min-width: 550px) and (max-width: 767px) {
-    padding: 4rem;
+    padding: ${spacings[5]};
   }
   @media (min-width: 768px) {
-    padding: 5rem;
+    padding: ${spacings[6]};
   }
 `
 

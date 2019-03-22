@@ -1,18 +1,12 @@
 import React from 'react'
-import styled from 'styled-components/macro'
+import ColumnWrapper from '../ColumnWrapper'
 import Link from '../Link/Link'
+import SectionHeadline from '../SectionHeadline'
 import Slanted from '../Slanted'
-
-const ColumnWrapper = styled.div`
-  @media (min-width: 768px) {
-    column-gap: 5rem;
-    column-count: 2;
-  }
-`
 
 const CodeOfConduct: React.FC = () => (
   <Slanted>
-    <h5>Code of Conduct</h5>
+    <SectionHeadline element="h2">Code of Conduct</SectionHeadline>
     <ColumnWrapper>
       <p>
         This meetup’s primary goal is to have an awesome, inclusive and safe

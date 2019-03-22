@@ -1,11 +1,17 @@
-import { QueryResolvers } from '../../typings/generated'
+import {
+  ArrayOrIterable,
+  Query,
+  ResolverFn,
+  UpcomingEvent,
+} from '../../typings/generated'
 import { ContextType } from '../../utils/createContext'
 
-const upcomingEventsResolver: QueryResolvers.UpcomingEventsResolver = async (
-  root,
-  args,
-  ctx: ContextType
-) => {
+const upcomingEventsResolver: ResolverFn<
+  ArrayOrIterable<UpcomingEvent>,
+  Query,
+  ContextType,
+  {}
+> = async (root, args, ctx: ContextType) => {
   const meetupEvents = await ctx.meetupService.fetchEventsByStatus('upcoming')
 
   return meetupEvents.map(event => ({

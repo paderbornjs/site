@@ -16,7 +16,6 @@ const AnimatedList = posed.ul({
 })
 
 export const List = styled(AnimatedList)`
-  margin: 0 -1.5rem;
   padding: 0;
 
   @media (min-width: 550px) {
@@ -36,10 +35,6 @@ export const ListItem = styled.li<{ itemIndex: number }>`
     // large
     flex-direction: row;
 
-    margin-bottom: -6rem;
-    &:last-child {
-      margin-bottom: 1.2rem;
-    }
     position: relative;
     height: 260px;
     align-items: center;

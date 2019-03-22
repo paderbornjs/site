@@ -1,4 +1,4 @@
-query EventsQuery {
+query GetEvents {
   upcomingEvents {
     date
     goingCount

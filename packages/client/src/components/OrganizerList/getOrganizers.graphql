@@ -1,4 +1,4 @@
-query OrganizersQuery {
+query GetOrganizers {
   organizers {
     description
     name

@@ -1,11 +1,12 @@
 import React from 'react'
+import ColumnWrapper from '../ColumnWrapper'
 import Link from '../Link/Link'
-import Slanted from '../Slanted/Slanted'
-import { ColumnWrapper } from './About.style'
+import SectionHeadline from '../SectionHeadline'
+import Slanted from '../Slanted'
 
 const About: React.FC = () => (
   <Slanted>
-    <h5>What is this all about?</h5>
+    <SectionHeadline element="h2">About Paderborn.js</SectionHeadline>
     <ColumnWrapper>
       <p>
         Paderborn.js is a usergroup focused on JavaScript and related topics. We
@@ -16,9 +17,9 @@ const About: React.FC = () => (
         We welcome a diverse range of topics that are related in any way to
         JavaScript and the community around it. New speakers, experienced
         speakers, and everyone in between. If you have an idea you aren’t sure
-        about, just reach out or add it as an issue in our{' '}
+        about, just reach out or add it as an issue in our Paderborn.js{' '}
         <Link href="https://github.com/paderbornjs/talks">
-          Paderborn.js talks repository
+          talks repository
         </Link>
         !
       </p>

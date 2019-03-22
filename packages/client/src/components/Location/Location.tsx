@@ -1,6 +1,7 @@
 import leaflet from 'leaflet'
 import React from 'react'
 import { AttributionControl, Map, Popup, TileLayer } from 'react-leaflet'
+import SectionHeadline from '../SectionHeadline'
 import Slanted from '../Slanted'
 import ExtendedMarker from './ExtendedMarker'
 
@@ -16,7 +17,7 @@ const markerIcon = leaflet.icon({
 const Location: React.FC = () => {
   return (
     <Slanted>
-      <h5>Location</h5>
+      <SectionHeadline element="h2">Location</SectionHeadline>
       <Map center={position} zoom={zoom} attributionControl={false}>
         <AttributionControl position="bottomright" prefix={false} />
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

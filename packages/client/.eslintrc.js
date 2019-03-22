@@ -20,6 +20,7 @@ module.exports = {
     },
   },
   rules: {
+    'prettier/prettier': 1,
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,

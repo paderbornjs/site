@@ -1,11 +1,17 @@
-import { UpcomingEvent } from '../../typings/generated'
+import {
+  ArrayOrIterable,
+  ResolverFn,
+  Talk,
+  UpcomingEvent,
+} from '../../typings/generated'
 import { ContextType } from '../../utils/createContext'
 
-const eventTalksResolver = async (
-  root: UpcomingEvent,
-  args,
-  ctx: ContextType
-) => {
+const eventTalksResolver: ResolverFn<
+  ArrayOrIterable<Talk>,
+  UpcomingEvent,
+  ContextType,
+  {}
+> = async (root, args, ctx) => {
   const eventDate = root.date.toISOString().substring(0, 10)
   return await ctx.eventTalksLoader.load(eventDate)
 }

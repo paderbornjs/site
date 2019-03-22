@@ -1,31 +1,33 @@
 import { createGlobalStyle } from 'styled-components/macro'
 import { background, link, text } from '../../style/colors'
+import fontSizes from '../../style/fontSizes'
+import spacings from '../../style/spacings'
 
 const GlobalStyle = createGlobalStyle<{}>`
 *, *::before, *::after {
   box-sizing: border-box;
 }
 html {
-  font-size: 10px;
+  font-size: ${fontSizes[2]};
   overflow-x: hidden;
 }
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: ${text};
   background: ${background};
   line-height: 1.625;
   overflow-x: hidden;
-  font-size: 1.6rem;
+  font-size: ${fontSizes[1]};
 
   @media (min-width: 550px) and (max-width: 767px) {
-    font-size: 1.7rem;
+    font-size: ${fontSizes[2]};
   }
   @media (min-width: 768px) {
-    font-size: 1.8rem;
+    font-size: ${fontSizes[3]};
   }
 }
 a, a:link, a:visited, a:focus, a:hover, a:active {
@@ -33,14 +35,19 @@ a, a:link, a:visited, a:focus, a:hover, a:active {
   text-decoration: none;
 }
 p {
-  margin: 0 0 2rem 0;
+  margin: 0 0 ${spacings[3]} 0;
+}
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 .leaflet-container {
-  border: 0.3rem solid white;
-  height: 50rem;
+  border: 3px solid white;
+  height: ${spacings[6]};
   max-height: 100vw;
   overflow: hidden;
-  margin: 0 -1.5rem;
+  margin: 0 -${spacings[3]};
   font: inherit;
 
   @media (min-width: 550px) {

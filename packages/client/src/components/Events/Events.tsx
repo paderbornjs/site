@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Flex } from 'rebass'
-import useImageLoadingState from '../../hooks/useImageLoadingState'
-import { useEventsQuery } from '../../typings/generated.d'
+import styled from 'styled-components/macro'
+import spacings from '../../style/spacings'
+import { useGetEventsQuery } from '../../typings/generated.d'
 import LoadingIndicator from '../LoadingIndicator'
-import EventsList from './EventsList'
+import EventDetails from './EventDetails'
+
+const List = styled.ol`
+  margin-top: ${spacings[5]};
+
+  @media (min-width: 550px) and (max-width: 767px) {
+    margin-top: ${spacings[6]};
+  }
+
+  @media (min-width: 768px) {
+    margin-top: ${spacings[7]};
+  }
+`
 
 export const Events: React.FC = () => {
-  const { data, error, loading: queryLoading } = useEventsQuery()
-  const [imageUrls, setImageUrls] = useState<string[]>([])
-  const imagesLoading = useImageLoadingState(imageUrls)
-
-  useEffect(() => {
-    if (data && data.upcomingEvents) {
-      setImageUrls(
-        data.upcomingEvents
-          .map(event => event.talks.map(talk => talk.speaker.avatarUrl))
-          .flat()
-      )
-    }
-  }, [data])
+  const { data, error, loading } = useGetEventsQuery()
 
   if (error) {
     return <>{error.message}</>
-  } else if (queryLoading || imagesLoading) {
+  } else if (loading) {
     return (
       <Flex justifyContent="center">
         <LoadingIndicator />
@@ -30,7 +31,13 @@ export const Events: React.FC = () => {
     )
   }
 
-  return <EventsList upcomingEvents={data!.upcomingEvents} />
+  return (
+    <List>
+      {[data!.upcomingEvents[0]].map(upcomingEvent => (
+        <EventDetails event={upcomingEvent} key={upcomingEvent.date} />
+      ))}
+    </List>
+  )
 }
 
 export default Events

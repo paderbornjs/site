@@ -1,49 +1,65 @@
-import styled from 'styled-components/macro'
+import styled, { keyframes } from 'styled-components/macro'
+import spacings from '../../style/spacings'
 import { ReactComponent as JavaScriptLogo } from './javascript.svg'
 
-export const Logo = styled(JavaScriptLogo)`
-  width: 6rem;
-  margin-left: 1em;
-
-  @media (min-width: 550px) and (max-width: 767px) {
-    width: 8rem;
-  }
-  @media (min-width: 768px) {
-    width: 10rem;
-  }
-`
-
-export const Container = styled.header`
+export const Container = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 0 2em 0;
   color: #12223c;
-  margin: 40px 0 0 0;
-`
-
-export const Headline = styled.h1`
-  font-size: 3.4rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  margin: 0;
+  margin: ${spacings[4]} 0 -54px 0;
 
   @media (min-width: 550px) and (max-width: 767px) {
-    font-size: 5rem;
+    margin: ${spacings[5]} 0 -66px 0;
   }
   @media (min-width: 768px) {
-    font-size: 6rem;
+    margin: ${spacings[6]} 0 -88px 0;
   }
 `
 
-export const Punchline = styled.p`
-  text-align: center;
-  font-size: 1.8rem;
+const jAnimation = keyframes`
+  0% { stroke-dashoffset: 881; }
+  29% { stroke-dashoffset: 0; }
+  30% { stroke-dashoffset: 0; fill: rgba(0, 0, 0, 0); }
+  60% { stroke-dashoffset: 0; fill: rgba(0, 0, 0, 0); }
+  100% { stroke-dashoffset: 0; fill: rgba(0, 0, 0, 1); }
+`
+
+const sAnimation = keyframes`
+  0% { stroke-dashoffset: 1241; }
+  29% { stroke-dashoffset: 1241; }
+  59% { stroke-dashoffset: 0; }
+  60% { stroke-dashoffset: 0; fill: rgba(0, 0, 0, 0); }
+  100% { stroke-dashoffset: 0; fill: rgba(0, 0, 0, 1); }
+`
+
+export const Logo = styled(JavaScriptLogo)`
+  z-index: 1;
+  margin: ${spacings[4]};
+  height: ${spacings[6]};
 
   @media (min-width: 550px) and (max-width: 767px) {
-    font-size: 2rem;
+    height: ${spacings[7]};
   }
   @media (min-width: 768px) {
-    font-size: 2.2rem;
+    height: ${spacings[8]};
+  }
+
+  .logo path:nth-of-type(1) {
+    fill: none;
+    stroke: black;
+    stroke-width: 4;
+    stroke-dasharray: 881;
+    stroke-dashoffset: 881;
+    animation: ${jAnimation} 2s linear 1s forwards;
+  }
+
+  .logo path:nth-of-type(2) {
+    fill: none;
+    stroke: black;
+    stroke-width: 4;
+    stroke-dasharray: 1241;
+    stroke-dashoffset: 1241;
+    animation: ${sAnimation} 2s linear 1s forwards;
   }
 `

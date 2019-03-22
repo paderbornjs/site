@@ -1,11 +1,17 @@
-import { QueryResolvers } from '../../typings/generated'
+import {
+  ArrayOrIterable,
+  Organizer,
+  Query,
+  ResolverFn,
+} from '../../typings/generated'
 import { ContextType } from '../../utils/createContext'
 
-const organizersResolver: QueryResolvers.OrganizersResolver = async (
-  root,
-  args,
-  ctx: ContextType
-) => {
+const organizersResolver: ResolverFn<
+  ArrayOrIterable<Organizer>,
+  Query,
+  ContextType,
+  {}
+> = async (root, args, ctx) => {
   const twitterUsers = await ctx.twitterService.fetchUsersByScreenName([
     'code_punkt',
     'tobi_pb',
