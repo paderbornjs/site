@@ -4,13 +4,12 @@ const NodemonPlugin = require('nodemon-webpack-plugin')
 
 const inProduction = process.env.NODE_ENV === 'production'
 const inDevelopment = process.env.NODE_ENV === 'development'
+const inTest = process.env.NODE_ENV === 'test'
 
 const plugins = []
 
 if (inDevelopment) {
-  plugins.push(
-    new NodemonPlugin()
-  )
+  plugins.push(new NodemonPlugin())
 }
 
 if (inProduction) {
@@ -61,9 +60,15 @@ module.exports = {
   module: {
     rules: [
       {
-        use: 'ts-loader',
-        test: /\.ts?$/,
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
+        options: {
+          babelrc: true,
+          cacheDirectory: true,
+          cacheCompression: inProduction,
+          compact: inProduction,
+        },
       },
       {
         test: /\.(graphql|gql)$/,

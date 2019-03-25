@@ -1,2 +1,2 @@
-webpack.config.js
+**/*.js
 src/typings/generated.d.ts

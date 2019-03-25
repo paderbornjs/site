@@ -1,4 +1,4 @@
-import * as DataLoader from 'dataloader'
+import DataLoader from 'dataloader'
 import { UPCOMING_TALK_LABEL } from '../constants'
 import GithubService from '../services/GithubService'
 import { Talk } from '../typings/generated'

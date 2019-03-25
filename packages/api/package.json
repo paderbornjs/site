@@ -12,10 +12,12 @@
     "build": "cross-env NODE_ENV=production npm-run-all build:clean build:webpack",
     "build:clean": "shx rm -rf build",
     "build:webpack": "webpack",
-    "test": "cross-env CI=true npm-run-all test:lint test:jest",
+    "serve": "cross-env PORT=444 NODE_ENV=production node build/api.js",
+    "test": "cross-env CI=true npm-run-all test:clear test:jest",
+    "test:clear": "shx rm -rf coverage",
     "test:watch": "jest --watch",
     "test:jest": "jest",
-    "test:lint": "eslint --ext .js --ext .ts src"
+    "lint": "eslint --ext .js --ext .ts src"
   },
   "lint-staged": {
     "linters": {
@@ -42,6 +44,10 @@
     "source-map-support": "^0.5.11"
   },
   "devDependencies": {
+    "@babel/core": "7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
     "@babel/preset-typescript": "^7.3.3",
     "@paderbornjs/schema": "1.0.0",
     "@types/express": "^4.16.1",
@@ -50,16 +56,19 @@
     "@types/helmet": "^0.0.42",
     "@types/node": "^11.9.5",
     "@types/node-fetch": "^2.1.6",
-    "apollo-server-lambda": "^2.4.8",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-macros": "^2.5.0",
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "jest": "23.6.0",
+    "jest-watch-typeahead": "^0.2.1",
     "netlify-lambda": "^1.4.2",
     "nodemon": "^1.18.10",
     "nodemon-webpack-plugin": "^4.0.7",
     "prettier": "^1.16.4",
-    "ts-loader": "^5.3.3",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-license-plugin": "^4.0.0-alpha.4"

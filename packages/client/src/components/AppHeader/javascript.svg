@@ -3,6 +3,7 @@
     <clipPath id="textClip">
       <text x="0" y="315" dominant-baseline="central" font-family="Helvetica,sans-serif" font-size="350" font-weight="800">PADERBORN</text>
     </clipPath>
+    <title id="title">Paderborn.js</title>
   </defs>
   <g clip-path="url(#textClip)">
     <path d="M1367,259L1128,-125L1004,261Z" fill="#556c8d" stroke="#556c8d" stroke-width="1.51"/>

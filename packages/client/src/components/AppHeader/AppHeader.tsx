@@ -3,7 +3,7 @@ import { Container, Logo } from './AppHeader.style'
 
 const AppHeader: React.FC = () => (
   <Container>
-    <Logo />
+    <Logo role="img" aria-labelledby="title" />
   </Container>
 )
 

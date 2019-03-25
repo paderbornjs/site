@@ -30,16 +30,18 @@ const OrganizerList: React.FC = () => {
   }
 
   return (
-    <List>
+    <>
       <SectionHeadline element="h2">Organizers</SectionHeadline>
-      <PoseGroup animateOnMount={true}>
-        {data!.organizers.map((organizer, i) => (
-          <ListItem key={i} itemIndex={i}>
-            <OrganizerCard itemIndex={i} organizer={organizer} />
-          </ListItem>
-        ))}
-      </PoseGroup>
-    </List>
+      <List>
+        <PoseGroup animateOnMount={true}>
+          {data!.organizers.map((organizer, i) => (
+            <ListItem key={i} itemIndex={i}>
+              <OrganizerCard itemIndex={i} organizer={organizer} />
+            </ListItem>
+          ))}
+        </PoseGroup>
+      </List>
+    </>
   )
 }
 
