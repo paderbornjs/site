@@ -6,10 +6,12 @@ import { onError } from 'apollo-link-error'
 import React from 'react'
 import { ApolloProvider } from 'react-apollo-hooks'
 import ReactDOM from 'react-dom'
+import { ThemeProvider } from 'styled-components/macro'
 import 'typeface-merriweather'
 import App from './components/App'
 import GlobalStyle from './components/GlobalStyle'
 import * as serviceWorker from './serviceWorker'
+import theme from './style/theme'
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -38,10 +40,12 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <ThemeProvider theme={theme}>
+      <ApolloProvider client={client}>
+        <GlobalStyle />
+        <App />
+      </ApolloProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )

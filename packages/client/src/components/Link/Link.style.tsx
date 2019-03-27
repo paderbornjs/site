@@ -1,9 +1,4 @@
-import { lighten } from 'polished'
 import styled from 'styled-components/macro'
-import { link } from '../../style/colors'
-
-export const linkLine = lighten(0.35, link)
-export const linkBg = lighten(0.43, link)
 
 export const StyledLink = styled.a`
   position: relative;
@@ -19,7 +14,7 @@ export const StyledLink = styled.a`
   &:focus,
   &:hover,
   &:active {
-    color: ${link};
+    color: ${props => props.theme.colors.blue[3]};
   }
 
   &:focus,
@@ -42,7 +37,7 @@ export const StyledLink = styled.a`
   }
 
   &::before {
-    border-top: 1px solid ${linkLine};
+    border-top: 1px solid ${props => props.theme.colors.blue[5]};
     background: transparent;
     transition-delay: 0.15s;
     transform: translateY(calc(100% - 2px));
@@ -50,7 +45,7 @@ export const StyledLink = styled.a`
 
   &::after {
     z-index: -1;
-    background: ${linkBg};
+    background: ${props => props.theme.colors.blue[6]};
     transform: translateY(-100%);
   }
 

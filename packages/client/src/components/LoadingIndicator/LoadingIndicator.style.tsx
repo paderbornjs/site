@@ -35,7 +35,7 @@ export const Ball = styled.div<{ index: number }>`
   width: ${spacings[3]};
   height: ${spacings[3]};
   border-radius: 50%;
-  border: 1px solid #175377;
+  border: 1px solid ${props => props.theme.colors.blue[0]};
   top: ${props => (props.index === 1 ? 0 : spacings[5])};
   left: ${props => props.index * 18}px;
 `

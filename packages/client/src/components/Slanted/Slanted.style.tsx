@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro'
-import { background } from '../../style/colors'
 import spacings from '../../style/spacings'
 import { Props as SlantedProps, SlantValue } from './Slanted'
 
@@ -22,7 +21,12 @@ const abs = (slant: SlantValue) => Math.abs(slant as number)
 
 export const Outer = styled.section<SlantedProps>`
   position: relative;
-  background: ${props => props.background || 'transparent'};
+  background: ${props =>
+    props.type === 'dark'
+      ? props.theme.colors.gray[3]
+      : props.type === 'light'
+      ? props.theme.colors.gray[4]
+      : props.theme.colors.gray[6]};
   z-index: 0;
 
   margin: ${props => abs(props.slantTop || 0)}vw 0
@@ -42,17 +46,29 @@ export const Outer = styled.section<SlantedProps>`
     content: ${props => (props.slantTop ? `''` : 'none')};
     height: ${props => abs(props.slantTop || 0)}vw;
     border-width: ${props => abs(props.slantTop || 0)}vw 100vw 0 0;
-    border-color: ${background} ${props => props.background} transparent
-      transparent;
+    border-color: ${props => props.theme.colors.gray[4]}
+      ${props =>
+        props.type === 'dark'
+          ? props.theme.colors.gray[3]
+          : props.type === 'light'
+          ? props.theme.colors.gray[4]
+          : props.theme.colors.gray[6]}
+      transparent transparent;
     transform: rotateY(${props => ((props.slantTop || 0) < 0 ? 180 : 0)}deg);
   }
+
   &::after {
     bottom: -${props => abs(props.slantBottom || 0)}vw;
     content: ${props => (props.slantBottom ? `''` : 'none')};
     height: ${props => abs(props.slantBottom || 0)}vw;
     border-width: ${props => abs(props.slantBottom || 0)}vw 100vw 0 0;
-    border-color: ${props => props.background} ${background} transparent
-      transparent;
+    border-color: ${props =>
+        props.type === 'dark'
+          ? props.theme.colors.gray[3]
+          : props.type === 'light'
+          ? props.theme.colors.gray[4]
+          : props.theme.colors.gray[6]}
+      ${props => props.theme.colors.gray[4]} transparent transparent;
     transform: rotateY(${props => ((props.slantBottom || 0) < 0 ? 180 : 0)}deg);
   }
 `

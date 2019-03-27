@@ -1,37 +1,66 @@
-import leaflet from 'leaflet'
+import Map from 'pigeon-maps'
 import React from 'react'
-import { AttributionControl, Map, Popup, TileLayer } from 'react-leaflet'
+import styled from 'styled-components/macro'
 import SectionHeadline from '../SectionHeadline'
-import Slanted from '../Slanted'
-import ExtendedMarker from './ExtendedMarker'
+
+const StyledMap = styled(Map)`
+  border: 3px solid white;
+`
+
+// https://codepen.io/andreasstorm/pen/ClguF
+// http://cssdeck.com/labs/tedyvui4
+const StyledMarker = styled.span`
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background: ${props => props.theme.colors.blue[3]};
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -20px 0 0 -20px;
+  animation-name: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  -webkit-mask-image: radial-gradient(
+    7px at 50% 50%,
+    transparent 99%,
+    black 100%
+  );
+
+  &:after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    margin: 8px 0 0 8px;
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+  }
+`
 
 const position = { lat: 51.718143463134766, lng: 8.745869636535645 }
 const zoom = 15
 
-const markerIcon = leaflet.icon({
-  iconAnchor: [12, 12],
-  iconSize: [24, 24],
-  iconUrl: require('../AppHeader/javascript.svg'),
-})
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Marker: React.FC<any> = ({ left, top }) => {
+  return <StyledMarker style={{ left, top }} />
+}
 
 const Location: React.FC = () => {
   return (
-    <Slanted>
+    <>
       <SectionHeadline element="h2">Location</SectionHeadline>
-      <Map center={position} zoom={zoom} attributionControl={false}>
-        <AttributionControl position="bottomright" prefix={false} />
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <ExtendedMarker position={position} icon={markerIcon}>
-          <Popup offset={[0, -6]}>
-            Sputnik
-            <br />
-            Imadstraße 7
-            <br />
-            33102 Paderborn
-          </Popup>
-        </ExtendedMarker>
-      </Map>
-    </Slanted>
+      <StyledMap
+        center={[position.lat, position.lng]}
+        zoom={zoom}
+        height={400}
+        attribution={false}
+      >
+        <Marker anchor={[position.lat, position.lng]} offset={[0, 0]} />
+        <Marker anchor={[position.lat, position.lng]} offset={[-100, 0]} />
+      </StyledMap>
+    </>
   )
 }
 

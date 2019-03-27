@@ -13,7 +13,6 @@ export const Name = styled.span`
 `
 
 export const Text = styled.div<{ itemIndex: number }>`
-  background: #f9fdfd;
   display: flex;
   flex-direction: column;
   width: 100%;

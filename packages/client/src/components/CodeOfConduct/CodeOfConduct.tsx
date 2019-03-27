@@ -2,10 +2,9 @@ import React from 'react'
 import ColumnWrapper from '../ColumnWrapper'
 import Link from '../Link/Link'
 import SectionHeadline from '../SectionHeadline'
-import Slanted from '../Slanted'
 
 const CodeOfConduct: React.FC = () => (
-  <Slanted>
+  <>
     <SectionHeadline element="h2">Code of Conduct</SectionHeadline>
     <ColumnWrapper>
       <p>
@@ -28,7 +27,7 @@ const CodeOfConduct: React.FC = () => (
         .
       </p>
     </ColumnWrapper>
-  </Slanted>
+  </>
 )
 
 export default CodeOfConduct

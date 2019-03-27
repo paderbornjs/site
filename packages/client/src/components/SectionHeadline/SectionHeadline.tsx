@@ -22,7 +22,7 @@ const Headline = styled.h1`
 
   em {
     font-style: normal;
-    border-bottom: 5px solid hsla(54, 93%, 54%, 1);
+    border-bottom: 5px solid ${props => props.theme.colors.yellow[4]};
   }
 `
 interface SectionHeadlineProps {

@@ -29,8 +29,8 @@ const Bubble = styled.div<ArrowPositionProps>`
   padding: ${spacings[2]};
   margin: 0;
   border-radius: ${spacings[2]};
-  border: 2px solid #e9f2f5;
-  background: #f9fcfd;
+  border: 2px solid ${props => props.theme.colors.gray[4]};
+  background: ${props => props.theme.colors.gray[5]};
   position: relative;
   z-index: 0;
 
@@ -45,19 +45,19 @@ const Bubble = styled.div<ArrowPositionProps>`
     content: ' ';
     border: solid 20px transparent;
     border-bottom: 0;
-    border-top-color: #f9fcfd;
+    border-top-color: ${props => props.theme.colors.gray[5]};
     overflow: hidden;
     z-index: 2;
   }
 
   &::before {
     bottom: -20px;
-    border-top-color: #e9f2f5;
+    border-top-color: ${props => props.theme.colors.gray[4]};
     z-index: 1;
   }
 
   @media (min-width: 550px) and (max-width: 767px) {
-    border: 3px solid #e9f2f5;
+    border-width: 3px;
     padding: ${spacings[3]};
 
     &::before {
@@ -66,7 +66,7 @@ const Bubble = styled.div<ArrowPositionProps>`
   }
 
   @media (min-width: 768px) {
-    border: 4px solid #e9f2f5;
+    border-width: 4px;
     padding: ${spacings[4]};
 
     &::before {

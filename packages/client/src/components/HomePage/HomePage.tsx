@@ -1,5 +1,4 @@
 import React from 'react'
-import { darkBackground, lightBackground } from '../../style/colors'
 import About from '../About'
 import AppLayout from '../AppLayout'
 import CodeOfConduct from '../CodeOfConduct'
@@ -11,17 +10,24 @@ import Sponsors from '../Sponsors'
 
 const HomePage: React.FC = () => (
   <AppLayout>
-    <Slanted background={lightBackground} slantTop={3} slantBottom={-2}>
+    <Slanted slantTop={3} slantBottom={-2}>
       <Events />
     </Slanted>
-    <About />
-
-    <Slanted background={darkBackground} slantTop={2} slantBottom={-1}>
+    <Slanted type="light">
+      <About />
+    </Slanted>
+    <Slanted type="dark" slantTop={2} slantBottom={-1}>
       <OrganizerList />
     </Slanted>
-    <Location />
-    <Sponsors background={lightBackground} slantTop={1} slantBottom={-3} />
-    <CodeOfConduct />
+    <Slanted type="light">
+      <Location />
+    </Slanted>
+    <Slanted slantTop={1} slantBottom={-3}>
+      <Sponsors />
+    </Slanted>
+    <Slanted type="light">
+      <CodeOfConduct />
+    </Slanted>
   </AppLayout>
 )
 

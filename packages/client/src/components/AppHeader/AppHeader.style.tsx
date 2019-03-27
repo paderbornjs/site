@@ -6,7 +6,6 @@ export const Container = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #12223c;
   margin: ${spacings[4]} 0 -54px 0;
 
   @media (min-width: 550px) and (max-width: 767px) {

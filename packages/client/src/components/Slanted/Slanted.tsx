@@ -21,18 +21,18 @@ export type SlantValue =
   | 8
 
 export interface Props {
-  background?: string
+  type?: 'dark' | 'light' | 'white'
   slantBottom?: SlantValue
   slantTop?: SlantValue
 }
 
 const Slanted: React.FC<Props> = ({
-  background,
+  type = 'white',
   children,
   slantBottom,
   slantTop,
 }) => (
-  <Outer background={background} slantBottom={slantBottom} slantTop={slantTop}>
+  <Outer type={type} slantBottom={slantBottom} slantTop={slantTop}>
     <Inner>{children}</Inner>
   </Outer>
 )

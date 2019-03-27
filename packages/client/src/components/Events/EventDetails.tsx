@@ -1,9 +1,9 @@
 import React from 'react'
+import { Flex } from 'rebass'
 import { GetEventsQuery } from '../../typings/generated.d'
 import SectionHeadline from '../SectionHeadline'
 import Talk from '../Talk'
 import { CallToAction, Talks } from './EventDetails.style'
-
 export interface EventDetailsProps {
   event: GetEventsQuery['upcomingEvents'][0]
   slotCount?: number
@@ -35,15 +35,13 @@ const EventDetails: React.FC<EventDetailsProps> = ({
         </em>
       </SectionHeadline>
 
-      <div
-        style={{
-          display: 'block',
-          justifyContent: 'center',
-        }}
-      >
-        <div>{JSON.stringify(venue)}</div>
-        <CallToAction href={url}>Are you going? ({goingCount})</CallToAction>
-      </div>
+      <Flex flexDirection="column" justifyContent="center">
+        <div>{venue.name}</div>
+        <div>{venue.street}</div>
+        <div>{venue.city}</div>
+        <CallToAction href={url}>Are you going?</CallToAction>
+        <div>{goingCount}</div>
+      </Flex>
       <SectionHeadline element="h2">Talks</SectionHeadline>
       <Talks>{slotElements}</Talks>
     </li>

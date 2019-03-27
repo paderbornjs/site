@@ -2,10 +2,9 @@ import React from 'react'
 import ColumnWrapper from '../ColumnWrapper'
 import Link from '../Link/Link'
 import SectionHeadline from '../SectionHeadline'
-import Slanted from '../Slanted'
 
 const About: React.FC = () => (
-  <Slanted>
+  <>
     <SectionHeadline element="h2">About Paderborn.js</SectionHeadline>
     <ColumnWrapper>
       <p>
@@ -37,7 +36,7 @@ const About: React.FC = () => (
         hearing from you, and to seeing you at an upcoming event!
       </p>
     </ColumnWrapper>
-  </Slanted>
+  </>
 )
 
 export default About
