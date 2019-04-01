@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components/macro'
-import spacings from '../../style/spacings'
 
 const ballAnimations = [
   keyframes`
@@ -22,8 +21,8 @@ const containerAnimation = keyframes`
 `
 
 export const BallContainer = styled.div`
-  width: ${spacings[7]};
-  height: ${spacings[7]};
+  width: 60px;
+  height: 60px;
   position: relative;
   animation: ${containerAnimation} 2s linear infinite;
 `
@@ -32,10 +31,10 @@ export const Ball = styled.div<{ index: number }>`
   animation: ${props => ballAnimations[props.index]} 2.2s ease 0s infinite;
   animation-fill-mode: both;
   position: absolute;
-  width: ${spacings[3]};
-  height: ${spacings[3]};
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   border: 1px solid ${props => props.theme.colors.blue[0]};
-  top: ${props => (props.index === 1 ? 0 : spacings[5])};
+  top: ${props => (props.index === 1 ? 0 : 36)}px;
   left: ${props => props.index * 18}px;
 `

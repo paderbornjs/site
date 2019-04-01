@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import spacings from '../../style/spacings'
+import theme from '../../style/theme'
 import { GetEventsQuery } from '../../typings/generated.d'
 import Link from '../Link'
 import { Description, Title } from './Talk.style'
 
 const Container = styled.li`
   position: relative;
-  margin-bottom: ${spacings[4]};
+  margin-bottom: ${props => props.theme.spacings[4]};
 
   @media (min-width: 768px) {
     flex: 1;
@@ -20,15 +20,16 @@ const Container = styled.li`
 
 interface ArrowPositionProps {
   arrowPosition: 'left' | 'right'
+  theme: typeof theme
 }
 
 const positionArrow = () => (props: ArrowPositionProps) =>
-  `${props.arrowPosition}: ${spacings[5]};`
+  `${props.arrowPosition}: ${props.theme.spacings[5]};`
 
 const Bubble = styled.div<ArrowPositionProps>`
-  padding: ${spacings[2]};
+  padding: ${props => props.theme.spacings[2]};
   margin: 0;
-  border-radius: ${spacings[2]};
+  border-radius: ${props => props.theme.spacings[2]};
   border: 2px solid ${props => props.theme.colors.gray[4]};
   background: ${props => props.theme.colors.gray[5]};
   position: relative;
@@ -58,7 +59,7 @@ const Bubble = styled.div<ArrowPositionProps>`
 
   @media (min-width: 550px) and (max-width: 767px) {
     border-width: 3px;
-    padding: ${spacings[3]};
+    padding: ${props => props.theme.spacings[3]};
 
     &::before {
       bottom: -22px;
@@ -67,7 +68,7 @@ const Bubble = styled.div<ArrowPositionProps>`
 
   @media (min-width: 768px) {
     border-width: 4px;
-    padding: ${spacings[4]};
+    padding: ${props => props.theme.spacings[4]};
 
     &::before {
       bottom: -24px;
@@ -76,9 +77,11 @@ const Bubble = styled.div<ArrowPositionProps>`
 `
 
 const Speaker = styled.div<ArrowPositionProps>`
-  margin-top: ${spacings[4]};
-  margin-left: ${props => (props.arrowPosition === 'left' ? spacings[4] : 0)};
-  margin-right: ${props => (props.arrowPosition === 'right' ? spacings[4] : 0)};
+  margin-top: ${props => props.theme.spacings[4]};
+  margin-left: ${props =>
+    props.arrowPosition === 'left' ? props.theme.spacings[4] : 0};
+  margin-right: ${props =>
+    props.arrowPosition === 'right' ? props.theme.spacings[4] : 0};
   text-align: ${props => props.arrowPosition};
 `
 

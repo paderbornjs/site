@@ -1,13 +1,11 @@
 import { createGlobalStyle } from 'styled-components/macro'
-import fontSizes from '../../style/fontSizes'
-import spacings from '../../style/spacings'
 
 const GlobalStyle = createGlobalStyle<{}>`
 *, *::before, *::after {
   box-sizing: border-box;
 }
 html {
-  font-size: ${fontSizes[2]};
+  font-size: ${props => props.theme.fontSizes[2]};
   overflow-x: hidden;
 }
 body {
@@ -20,13 +18,13 @@ body {
   background: ${props => props.theme.colors.gray[4]};
   line-height: 1.625;
   overflow-x: hidden;
-  font-size: ${fontSizes[1]};
+  font-size: ${props => props.theme.fontSizes[1]};
 
   @media (min-width: 550px) and (max-width: 767px) {
-    font-size: ${fontSizes[2]};
+    font-size: ${props => props.theme.fontSizes[2]};
   }
   @media (min-width: 768px) {
-    font-size: ${fontSizes[3]};
+    font-size: ${props => props.theme.fontSizes[3]};
   }
 }
 a, a:link, a:visited, a:focus, a:hover, a:active {
@@ -34,7 +32,7 @@ a, a:link, a:visited, a:focus, a:hover, a:active {
   text-decoration: none;
 }
 p {
-  margin: 0 0 ${spacings[3]} 0;
+  margin: 0 0 ${props => props.theme.spacings[3]} 0;
 }
 ul, ol {
   margin: 0;

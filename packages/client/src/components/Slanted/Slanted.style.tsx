@@ -1,19 +1,18 @@
 import styled from 'styled-components/macro'
-import spacings from '../../style/spacings'
 import { Props as SlantedProps, SlantValue } from './Slanted'
 
 export const Inner = styled.div`
   max-width: 1000px;
   margin: 0 auto;
-  padding: ${spacings[4]};
+  padding: ${props => props.theme.spacings[4]};
   display: flex;
   flex-direction: column;
 
   @media (min-width: 550px) and (max-width: 767px) {
-    padding: ${spacings[5]};
+    padding: ${props => props.theme.spacings[5]};
   }
   @media (min-width: 768px) {
-    padding: ${spacings[6]};
+    padding: ${props => props.theme.spacings[6]};
   }
 `
 

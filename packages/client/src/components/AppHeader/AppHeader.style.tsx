@@ -1,18 +1,17 @@
 import styled, { keyframes } from 'styled-components/macro'
-import spacings from '../../style/spacings'
 import { ReactComponent as JavaScriptLogo } from './javascript.svg'
 
 export const Container = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: ${spacings[4]} 0 -54px 0;
+  margin: ${props => props.theme.spacings[4]} 0 -54px 0;
 
   @media (min-width: 550px) and (max-width: 767px) {
-    margin: ${spacings[5]} 0 -66px 0;
+    margin: ${props => props.theme.spacings[5]} 0 -66px 0;
   }
   @media (min-width: 768px) {
-    margin: ${spacings[6]} 0 -88px 0;
+    margin: ${props => props.theme.spacings[6]} 0 -88px 0;
   }
 `
 
@@ -34,14 +33,14 @@ const sAnimation = keyframes`
 
 export const Logo = styled(JavaScriptLogo)`
   z-index: 1;
-  margin: ${spacings[4]};
-  height: ${spacings[6]};
+  margin: ${props => props.theme.spacings[4]};
+  height: ${props => props.theme.spacings[6]};
 
   @media (min-width: 550px) and (max-width: 767px) {
-    height: ${spacings[7]};
+    height: ${props => props.theme.spacings[7]};
   }
   @media (min-width: 768px) {
-    height: ${spacings[8]};
+    height: ${props => props.theme.spacings[8]};
   }
 
   .logo path:nth-of-type(1) {

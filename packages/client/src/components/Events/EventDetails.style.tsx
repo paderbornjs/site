@@ -1,6 +1,4 @@
 import styled from 'styled-components/macro'
-import fontSizes from '../../style/fontSizes'
-import spacings from '../../style/spacings'
 import Link from '../Link'
 
 export const Emphasize = styled.em`
@@ -9,10 +7,10 @@ export const Emphasize = styled.em`
 `
 
 export const CallToAction = styled(Link)`
-  padding: ${spacings[2]} ${spacings[4]};
+  padding: ${props => `${props.theme.spacings[2]} ${props.theme.spacings[4]}`};
   background: ${props => props.theme.colors.blue[5]};
-  border-radius: ${spacings[1]};
-  font-size: ${fontSizes[4]};
+  border-radius: ${props => props.theme.spacings[1]};
+  font-size: ${props => props.theme.fontSizes[4]};
   font-weight: 500;
 
   &:link,

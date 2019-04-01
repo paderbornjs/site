@@ -1,14 +1,13 @@
 import styled from 'styled-components/macro'
-import fontSizes from '../../style/fontSizes'
 import { ReactComponent } from './twitter.svg'
 
 export const Name = styled.span`
-  font-size: ${fontSizes[4]};
+  font-size: ${props => props.theme.fontSizes[4]};
   font-weight: 500;
   line-height: 1.25;
 
   @media (min-width: 768px) {
-    font-size: ${fontSizes[5]};
+    font-size: ${props => props.theme.fontSizes[5]};
   }
 `
 

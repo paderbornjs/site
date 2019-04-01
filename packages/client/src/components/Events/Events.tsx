@@ -1,20 +1,19 @@
 import React from 'react'
 import { Flex } from 'rebass'
 import styled from 'styled-components/macro'
-import spacings from '../../style/spacings'
 import { useGetEventsQuery } from '../../typings/generated.d'
 import LoadingIndicator from '../LoadingIndicator'
 import EventDetails from './EventDetails'
 
 const List = styled.ol`
-  margin-top: ${spacings[5]};
+  margin-top: ${props => props.theme.spacings[5]};
 
   @media (min-width: 550px) and (max-width: 767px) {
-    margin-top: ${spacings[6]};
+    margin-top: ${props => props.theme.spacings[6]};
   }
 
   @media (min-width: 768px) {
-    margin-top: ${spacings[7]};
+    margin-top: ${props => props.theme.spacings[7]};
   }
 `
 
