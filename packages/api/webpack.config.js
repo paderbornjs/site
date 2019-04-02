@@ -2,17 +2,16 @@ const path = require('path')
 const LicensePlugin = require('webpack-license-plugin')
 const NodemonPlugin = require('nodemon-webpack-plugin')
 
-const inProduction = process.env.NODE_ENV === 'production'
-const inDevelopment = process.env.NODE_ENV === 'development'
-const inTest = process.env.NODE_ENV === 'test'
+const isProduction = process.env.NODE_ENV === 'production'
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 const plugins = []
 
-if (inDevelopment) {
+if (isDevelopment) {
   plugins.push(new NodemonPlugin())
 }
 
-if (inProduction) {
+if (isProduction) {
   plugins.push(
     new LicensePlugin({
       outputFilename: 'license-list.json',
@@ -66,8 +65,8 @@ module.exports = {
         options: {
           babelrc: true,
           cacheDirectory: true,
-          cacheCompression: inProduction,
-          compact: inProduction,
+          cacheCompression: isProduction,
+          compact: isProduction,
         },
       },
       {
@@ -77,6 +76,6 @@ module.exports = {
       },
     ],
   },
-  stats: inProduction ? 'normal' : 'errors-only',
+  stats: isProduction ? 'normal' : 'errors-only',
   plugins,
 }
