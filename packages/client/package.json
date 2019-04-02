@@ -11,10 +11,9 @@
     "build": "npm-run-all build:clean build:webpack",
     "build:clean": "shx rm -rf build",
     "build:webpack": "rescripts build",
-    "test": "npm-run-all test:lint test:jest",
-    "test:watch": "rescripts test",
-    "test:lint": "eslint --ext .js --ext .ts --ext .tsx src",
-    "test:jest": "cross-env CI=true rescripts test --coverage"
+    "lint": "eslint --ext .js --ext .ts --ext .tsx src",
+    "test": "cross-env CI=true rescripts test --coverage",
+    "test:watch": "rescripts test"
   },
   "lint-staged": {
     "linters": {
@@ -64,6 +63,7 @@
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "jest-styled-components": "^6.3.1",
     "react-testing-library": "^6.0.4",
     "webpack-bundle-analyzer": "^3.1.0"
   }
