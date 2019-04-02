@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<About /> matches snapshot 1`] = `
+.c0 {
+  font-family: Merriweather,serif;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  margin: 0 0 16px 0;
+}
+
+.c0 em {
+  font-style: normal;
+  border-bottom: 5px solid hsl(54,95%,65%);
+}
+
+@media (min-width:550px) and (max-width:767px) {
+  .c0 {
+    font-size: 24px;
+    margin: 0 0 24px 0;
+  }
+}
+
+@media (min-width:768px) {
+  .c0 {
+    font-size: 30px;
+    margin: 0 0 32px 0;
+  }
+}
+
+<h2
+  class="c0"
+>
+  About Paderborn.js
+</h2>
+`;
