@@ -4,21 +4,6 @@ import TwitterService from '../services/TwitterService'
 import createContext from './createContext'
 
 describe('createContext', () => {
-  const env = process.env
-
-  beforeEach(() => {
-    process.env = {
-      ...env,
-      MEETUP_KEY: 'test',
-      TWITTER_API_KEY: 'test',
-      TWITTER_API_SECRET: 'test',
-    }
-  })
-
-  afterEach(() => {
-    process.env = env
-  })
-
   it('returns appropriate loaders and services', () => {
     const ctx = createContext()
 
