@@ -5,9 +5,9 @@ import {
   ApolloServer,
   makeExecutableSchema,
 } from 'apollo-server-express'
-import * as casual from 'casual'
-import * as express from 'express'
-import * as helmet from 'helmet'
+import casual from 'casual'
+import express from 'express'
+import helmet from 'helmet'
 import * as typeDefs from '../../schema/schema.graphql'
 import resolvers from './resolvers'
 import createContext from './utils/createContext'
