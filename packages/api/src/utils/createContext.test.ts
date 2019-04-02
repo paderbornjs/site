@@ -3,6 +3,18 @@ import MeetupService from '../services/MeetupService'
 import TwitterService from '../services/TwitterService'
 import createContext from './createContext'
 
+beforeAll(() => {
+  process.env.MEETUP_KEY = 'test'
+  process.env.TWITTER_API_KEY = 'test'
+  process.env.TWITTER_API_SECRET = 'test'
+})
+
+afterAll(() => {
+  delete process.env.MEETUP_KEY
+  delete process.env.TWITTER_API_KEY
+  delete process.env.TWITTER_API_SECRET
+})
+
 describe('createContext', () => {
   it('returns appropriate loaders and services', () => {
     const ctx = createContext()

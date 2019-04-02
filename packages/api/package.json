@@ -13,10 +13,10 @@
     "build:clean": "shx rm -rf build",
     "build:webpack": "webpack",
     "serve": "cross-env PORT=444 NODE_ENV=production node build/api.js",
-    "test": "cross-env CI=true MEETUP_KEY=test TWITTER_API_KEY=test TWITTER_API_SECRET=test npm-run-all test:clear test:jest",
+    "test": "cross-env CI=true npm-run-all test:clear test:jest",
     "test:clear": "shx rm -rf coverage",
     "test:watch": "jest --watch",
-    "test:jest": "jest",
+    "test:jest": "jest --coverage",
     "lint": "eslint --ext .js --ext .ts src"
   },
   "lint-staged": {

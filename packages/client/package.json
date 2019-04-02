@@ -12,7 +12,9 @@
     "build:clean": "shx rm -rf build",
     "build:webpack": "rescripts build",
     "lint": "eslint --ext .js --ext .ts --ext .tsx src",
-    "test": "cross-env CI=true rescripts test --coverage",
+    "test": "rescripts test",
+    "test:ci": "cross-env CI=true rescripts test --coverage",
+    "test:debug": "rescripts --inspect-brk test",
     "test:watch": "rescripts test"
   },
   "lint-staged": {
