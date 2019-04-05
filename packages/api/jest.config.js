@@ -1,5 +1,5 @@
 module.exports = {
-  collectCoverage: false,
+  testEnvironment: 'node',
   collectCoverageFrom: [
     'src/**/*.ts?(x)',
     '!src/**/*.test.ts?(x)',
@@ -7,7 +7,6 @@ module.exports = {
   ],
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
   testMatch: ['**/?(*.)+(spec|test).ts?(x)'],
-  testEnvironment: 'node',
   transform: {
     '^.+\\.(gql|graphql)$': 'jest-transform-graphql',
     '^.+\\.(ts|tsx)$': '<rootDir>/../../node_modules/babel-jest',

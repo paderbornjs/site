@@ -1,7 +1,8 @@
 {
   "name": "@paderbornjs/schema",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
   "scripts": {
     "build": "graphql-codegen",
     "start": "graphql-codegen --watch"

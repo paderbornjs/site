@@ -75,8 +75,6 @@ import {
   GraphQLScalarTypeConfig,
 } from 'graphql'
 
-export type ArrayOrIterable<T> = Array<T> | Iterable<T>
-
 export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
@@ -107,12 +105,7 @@ export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>
 
-export interface ISubscriptionResolverObject<
-  TResult,
-  TParent,
-  TContext,
-  TArgs
-> {
+export interface SubscriptionResolverObject<TResult, TParent, TContext, TArgs> {
   subscribe: SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs>
   resolve?: SubscriptionResolveFn<TResult, TParent, TContext, TArgs>
 }
@@ -125,8 +118,8 @@ export type SubscriptionResolver<
 > =
   | ((
       ...args: any[]
-    ) => ISubscriptionResolverObject<TResult, TParent, TContext, TArgs>)
-  | ISubscriptionResolverObject<TResult, TParent, TContext, TArgs>
+    ) => SubscriptionResolverObject<TResult, TParent, TContext, TArgs>)
+  | SubscriptionResolverObject<TResult, TParent, TContext, TArgs>
 
 export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (
   parent: TParent,
@@ -177,8 +170,8 @@ export type OrganizerResolvers<
 }
 
 export type QueryResolvers<Context = ContextType, ParentType = Query> = {
-  organizers?: Resolver<ArrayOrIterable<Organizer>, ParentType, Context>
-  upcomingEvents?: Resolver<ArrayOrIterable<UpcomingEvent>, ParentType, Context>
+  organizers?: Resolver<Array<Organizer>, ParentType, Context>
+  upcomingEvents?: Resolver<Array<UpcomingEvent>, ParentType, Context>
 }
 
 export type SpeakerResolvers<Context = ContextType, ParentType = Speaker> = {
@@ -193,7 +186,7 @@ export type TalkResolvers<Context = ContextType, ParentType = Talk> = {
   date?: Resolver<Scalars['DateTime'], ParentType, Context>
   description?: Resolver<Scalars['String'], ParentType, Context>
   isLightningTalk?: Resolver<Scalars['Boolean'], ParentType, Context>
-  labels?: Resolver<ArrayOrIterable<Scalars['String']>, ParentType, Context>
+  labels?: Resolver<Array<Scalars['String']>, ParentType, Context>
   speaker?: Resolver<Speaker, ParentType, Context>
   title?: Resolver<Scalars['String'], ParentType, Context>
 }
@@ -206,10 +199,10 @@ export type UpcomingEventResolvers<
   goingCount?: Resolver<Scalars['Int'], ParentType, Context>
   url?: Resolver<Scalars['String'], ParentType, Context>
   venue?: Resolver<EventVenue, ParentType, Context>
-  talks?: Resolver<ArrayOrIterable<Talk>, ParentType, Context>
+  talks?: Resolver<Array<Talk>, ParentType, Context>
 }
 
-export type IResolvers<Context = ContextType> = {
+export type Resolvers<Context = ContextType> = {
   DateTime?: GraphQLScalarType
   EventVenue?: EventVenueResolvers<Context>
   Organizer?: OrganizerResolvers<Context>
@@ -218,3 +211,9 @@ export type IResolvers<Context = ContextType> = {
   Talk?: TalkResolvers<Context>
   UpcomingEvent?: UpcomingEventResolvers<Context>
 }
+
+/**
+ * @deprecated
+ * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
+ */
+export type IResolvers<Context = ContextType> = Resolvers<Context>

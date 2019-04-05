@@ -10,8 +10,8 @@
   "scripts": {
     "build": "cross-env FORCE_COLOR=1 lerna run build",
     "test": "is-ci \"test:ci\" \"test:watch\"",
-    "test:ci": "lerna run test:ci",
-    "test:watch": "shx echo watchmode",
+    "test:ci": "jest",
+    "test:watch": "jest --watch",
     "release": "standard-version",
     "start": "lerna run start --parallel"
   },
@@ -28,12 +28,12 @@
   },
   "jest": {
     "projects": [
-      "<rootDir>/packages/*"
+      "<rootDir>/packages/api/jest.config.js",
+      "<rootDir>/packages/client/jest.config.js"
     ],
-    "collectCoverage": false,
-    "preset": "ts-jest",
-    "restoreMocks": true,
-    "testEnvironment": "node"
+    "testMatch": [
+      "**/?(*.)+(spec|test).ts?(x)"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",

@@ -1,5 +1,6 @@
 const { appendWebpackPlugin } = require('@rescripts/utilities')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const LicensePlugin = require('webpack-license-plugin')
 
 module.exports = [
   // development
@@ -22,6 +23,15 @@ module.exports = [
           analyzerMode: 'static',
           openAnalyzer: false,
           reportFilename: 'bundle-report.html',
+        }),
+        config
+      )
+
+      config = appendWebpackPlugin(
+        new LicensePlugin({
+          outputFilename: 'license-list.json',
+          unacceptableLicenseTest: license =>
+            ['GPL', 'AGPL', 'LGPL', 'NGPL'].includes(license),
         }),
         config
       )

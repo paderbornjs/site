@@ -15,7 +15,7 @@
     "test": "is-ci \"test:ci\" \"test:watch\"",
     "test:ci": "cross-env CI=true npm-run-all test:clear test:jest",
     "test:clear": "shx rm -rf coverage",
-    "test:jest": "rescripts test --coverage",
+    "test:jest": "jest --coverage --colors --runInBand",
     "test:watch": "rescripts test"
   },
   "lint-staged": {
@@ -68,6 +68,7 @@
     "eslint-plugin-react": "^7.12.4",
     "jest-styled-components": "^6.3.1",
     "react-testing-library": "^6.0.4",
-    "webpack-bundle-analyzer": "^3.1.0"
+    "webpack-bundle-analyzer": "^3.1.0",
+    "webpack-license-plugin": "4.0.0"
   }
 }
