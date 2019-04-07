@@ -1,4 +1,5 @@
 module.exports = {
+  displayName: 'client',
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
   resolver: 'jest-pnp-resolver',
   setupFiles: ['react-app-polyfill/jsdom'],
@@ -8,11 +9,8 @@ module.exports = {
     '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}',
   ],
   testEnvironment: 'jsdom',
-  testURL: 'http://localhost',
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/../../node_modules/babel-jest',
-    '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': 
-      '<rootDir>/../../node_modules/react-scripts/config/jest/fileTransform.js',
   },
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',

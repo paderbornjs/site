@@ -1,5 +1,6 @@
 module.exports = {
   testEnvironment: 'node',
+  displayName: 'api',
   collectCoverageFrom: [
     'src/**/*.ts?(x)',
     '!src/**/*.test.ts?(x)',

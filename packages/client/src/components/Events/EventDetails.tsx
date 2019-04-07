@@ -4,6 +4,7 @@ import { GetEventsQuery } from '../../typings/generated.d'
 import SectionHeadline from '../SectionHeadline'
 import Talk from '../Talk'
 import { CallToAction, Talks } from './EventDetails.style'
+
 export interface EventDetailsProps {
   event: GetEventsQuery['upcomingEvents'][0]
   slotCount?: number

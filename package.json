@@ -10,7 +10,7 @@
   "scripts": {
     "build": "cross-env FORCE_COLOR=1 lerna run build",
     "test": "is-ci \"test:ci\" \"test:watch\"",
-    "test:ci": "jest",
+    "test:ci": "lerna run test:ci",
     "test:watch": "jest --watch",
     "release": "standard-version",
     "start": "lerna run start --parallel"
@@ -24,15 +24,6 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
-  },
-  "jest": {
-    "projects": [
-      "<rootDir>/packages/api/jest.config.js",
-      "<rootDir>/packages/client/jest.config.js"
-    ],
-    "testMatch": [
-      "**/?(*.)+(spec|test).ts?(x)"
     ]
   },
   "devDependencies": {
