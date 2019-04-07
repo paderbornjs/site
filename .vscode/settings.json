@@ -3,9 +3,31 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
+  "editor.snippetSuggestions": "top",
+
+  // colorize
+  "colorize.colorized_colors": ["HEXA", "RGB", "HSL"],
+  "colorize.languages": [
+    "css",
+    "sass",
+    "scss",
+    "less",
+    "postcss",
+    "sss",
+    "stylus",
+    "xml",
+    "svg",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // gitlens
   "gitlens.currentLine.enabled": false,
   "gitlens.mode.statusBar.enabled": true,
-  "editor.snippetSuggestions": "top",
+
+  // eslint
   "eslint.options": {
     "configFile": ".eslintrc.js"
   },
@@ -35,6 +57,8 @@
       "autoFix": true
     }
   ],
+
+  // versionlens
   "versionlens.showVersionLensesAtStartup": false,
   "versionlens.showDependencyStatusesAtStartup": false
 }
