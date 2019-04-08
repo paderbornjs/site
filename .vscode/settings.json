@@ -36,5 +36,6 @@
     }
   ],
   "versionlens.showVersionLensesAtStartup": false,
-  "versionlens.showDependencyStatusesAtStartup": false
+  "versionlens.showDependencyStatusesAtStartup": false,
+  "[handlebars]": { "editor.formatOnSave": false }
 }
