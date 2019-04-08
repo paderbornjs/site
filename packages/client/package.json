@@ -16,7 +16,7 @@
     "test:ci": "cross-env CI=true npm-run-all test:clear test:jest",
     "test:clear": "shx rm -rf coverage",
     "test:jest": "jest --coverage --colors --runInBand",
-    "test:watch": "rescripts test"
+    "test:watch": "jest --watch"
   },
   "lint-staged": {
     "linters": {

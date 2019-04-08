@@ -75,6 +75,8 @@ import {
   GraphQLScalarTypeConfig,
 } from 'graphql'
 
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+
 export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
@@ -142,64 +144,92 @@ export type DirectiveResolverFn<
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>
 
+/** Mapping between all available schema types and the resolvers types */
+export type ResolversTypes = {
+  Query: Query
+  Organizer: Organizer
+  String: Scalars['String']
+  UpcomingEvent: UpcomingEvent
+  DateTime: Scalars['DateTime']
+  Int: Scalars['Int']
+  EventVenue: EventVenue
+  Float: Scalars['Float']
+  Talk: Talk
+  Boolean: Scalars['Boolean']
+  Speaker: Speaker
+}
+
 export interface DateTimeScalarConfig
-  extends GraphQLScalarTypeConfig<Scalars['DateTime'], any> {
+  extends GraphQLScalarTypeConfig<ResolversTypes['DateTime'], any> {
   name: 'DateTime'
 }
 
 export type EventVenueResolvers<
   Context = ContextType,
-  ParentType = EventVenue
+  ParentType = ResolversTypes['EventVenue']
 > = {
-  city?: Resolver<Scalars['String'], ParentType, Context>
-  country?: Resolver<Scalars['String'], ParentType, Context>
-  lat?: Resolver<Scalars['Float'], ParentType, Context>
-  lon?: Resolver<Scalars['Float'], ParentType, Context>
-  name?: Resolver<Scalars['String'], ParentType, Context>
-  street?: Resolver<Scalars['String'], ParentType, Context>
+  city?: Resolver<ResolversTypes['String'], ParentType, Context>
+  country?: Resolver<ResolversTypes['String'], ParentType, Context>
+  lat?: Resolver<ResolversTypes['Float'], ParentType, Context>
+  lon?: Resolver<ResolversTypes['Float'], ParentType, Context>
+  name?: Resolver<ResolversTypes['String'], ParentType, Context>
+  street?: Resolver<ResolversTypes['String'], ParentType, Context>
 }
 
 export type OrganizerResolvers<
   Context = ContextType,
-  ParentType = Organizer
+  ParentType = ResolversTypes['Organizer']
 > = {
-  description?: Resolver<Scalars['String'], ParentType, Context>
-  name?: Resolver<Scalars['String'], ParentType, Context>
-  profileImageUrl?: Resolver<Scalars['String'], ParentType, Context>
-  twitterName?: Resolver<Scalars['String'], ParentType, Context>
+  description?: Resolver<ResolversTypes['String'], ParentType, Context>
+  name?: Resolver<ResolversTypes['String'], ParentType, Context>
+  profileImageUrl?: Resolver<ResolversTypes['String'], ParentType, Context>
+  twitterName?: Resolver<ResolversTypes['String'], ParentType, Context>
 }
 
-export type QueryResolvers<Context = ContextType, ParentType = Query> = {
-  organizers?: Resolver<Array<Organizer>, ParentType, Context>
-  upcomingEvents?: Resolver<Array<UpcomingEvent>, ParentType, Context>
+export type QueryResolvers<
+  Context = ContextType,
+  ParentType = ResolversTypes['Query']
+> = {
+  organizers?: Resolver<Array<ResolversTypes['Organizer']>, ParentType, Context>
+  upcomingEvents?: Resolver<
+    Array<ResolversTypes['UpcomingEvent']>,
+    ParentType,
+    Context
+  >
 }
 
-export type SpeakerResolvers<Context = ContextType, ParentType = Speaker> = {
-  avatarUrl?: Resolver<Scalars['String'], ParentType, Context>
-  name?: Resolver<Scalars['String'], ParentType, Context>
-  occupation?: Resolver<Scalars['String'], ParentType, Context>
-  socialName?: Resolver<Maybe<Scalars['String']>, ParentType, Context>
-  socialUrl?: Resolver<Maybe<Scalars['String']>, ParentType, Context>
+export type SpeakerResolvers<
+  Context = ContextType,
+  ParentType = ResolversTypes['Speaker']
+> = {
+  avatarUrl?: Resolver<ResolversTypes['String'], ParentType, Context>
+  name?: Resolver<ResolversTypes['String'], ParentType, Context>
+  occupation?: Resolver<ResolversTypes['String'], ParentType, Context>
+  socialName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, Context>
+  socialUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, Context>
 }
 
-export type TalkResolvers<Context = ContextType, ParentType = Talk> = {
-  date?: Resolver<Scalars['DateTime'], ParentType, Context>
-  description?: Resolver<Scalars['String'], ParentType, Context>
-  isLightningTalk?: Resolver<Scalars['Boolean'], ParentType, Context>
-  labels?: Resolver<Array<Scalars['String']>, ParentType, Context>
-  speaker?: Resolver<Speaker, ParentType, Context>
-  title?: Resolver<Scalars['String'], ParentType, Context>
+export type TalkResolvers<
+  Context = ContextType,
+  ParentType = ResolversTypes['Talk']
+> = {
+  date?: Resolver<ResolversTypes['DateTime'], ParentType, Context>
+  description?: Resolver<ResolversTypes['String'], ParentType, Context>
+  isLightningTalk?: Resolver<ResolversTypes['Boolean'], ParentType, Context>
+  labels?: Resolver<Array<ResolversTypes['String']>, ParentType, Context>
+  speaker?: Resolver<ResolversTypes['Speaker'], ParentType, Context>
+  title?: Resolver<ResolversTypes['String'], ParentType, Context>
 }
 
 export type UpcomingEventResolvers<
   Context = ContextType,
-  ParentType = UpcomingEvent
+  ParentType = ResolversTypes['UpcomingEvent']
 > = {
-  date?: Resolver<Scalars['DateTime'], ParentType, Context>
-  goingCount?: Resolver<Scalars['Int'], ParentType, Context>
-  url?: Resolver<Scalars['String'], ParentType, Context>
-  venue?: Resolver<EventVenue, ParentType, Context>
-  talks?: Resolver<Array<Talk>, ParentType, Context>
+  date?: Resolver<ResolversTypes['DateTime'], ParentType, Context>
+  goingCount?: Resolver<ResolversTypes['Int'], ParentType, Context>
+  url?: Resolver<ResolversTypes['String'], ParentType, Context>
+  venue?: Resolver<ResolversTypes['EventVenue'], ParentType, Context>
+  talks?: Resolver<Array<ResolversTypes['Talk']>, ParentType, Context>
 }
 
 export type Resolvers<Context = ContextType> = {
