@@ -1,29 +1,12 @@
 import styled from 'styled-components/macro'
 import { Props as SlantedProps, SlantValue } from './Slanted'
 
-export const Inner = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: ${props => props.theme.spacings[4]};
-  display: flex;
-  flex-direction: column;
-
-  @media (min-width: 550px) and (max-width: 767px) {
-    padding: ${props => props.theme.spacings[5]};
-  }
-  @media (min-width: 768px) {
-    padding: ${props => props.theme.spacings[6]};
-  }
-`
-
 const abs = (slant: SlantValue) => Math.abs(slant as number)
 
 export const Outer = styled.section<SlantedProps>`
   position: relative;
   background: ${props =>
     props.type === 'dark'
-      ? props.theme.colors.gray[3]
-      : props.type === 'light'
       ? props.theme.colors.gray[4]
       : props.theme.colors.gray[6]};
   z-index: 0;
@@ -48,8 +31,6 @@ export const Outer = styled.section<SlantedProps>`
     border-color: ${props => props.theme.colors.gray[4]}
       ${props =>
         props.type === 'dark'
-          ? props.theme.colors.gray[3]
-          : props.type === 'light'
           ? props.theme.colors.gray[4]
           : props.theme.colors.gray[6]}
       transparent transparent;
@@ -63,8 +44,6 @@ export const Outer = styled.section<SlantedProps>`
     border-width: ${props => abs(props.slantBottom || 0)}vw 100vw 0 0;
     border-color: ${props =>
         props.type === 'dark'
-          ? props.theme.colors.gray[3]
-          : props.type === 'light'
           ? props.theme.colors.gray[4]
           : props.theme.colors.gray[6]}
       ${props => props.theme.colors.gray[4]} transparent transparent;

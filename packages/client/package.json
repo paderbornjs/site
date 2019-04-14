@@ -38,7 +38,7 @@
     "apollo-client": "^2.5.1",
     "apollo-link-batch-http": "^1.2.8",
     "apollo-link-error": "^1.1.7",
-    "pigeon-maps": "^0.11.11",
+    "raw.macro": "^0.3.0",
     "react": "^16.8.2",
     "react-apollo": "^2.5.1",
     "react-apollo-hooks": "^0.4.3",

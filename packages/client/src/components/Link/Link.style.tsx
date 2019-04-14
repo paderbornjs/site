@@ -1,6 +1,7 @@
+import { Link } from 'rebass'
 import styled from 'styled-components/macro'
 
-export const StyledLink = styled.a`
+export const StyledLink = styled(Link)`
   position: relative;
   text-decoration: none;
   display: inline-block;

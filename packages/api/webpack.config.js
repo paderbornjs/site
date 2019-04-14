@@ -20,21 +20,6 @@ if (isProduction) {
       },
       unacceptableLicenseTest: license =>
         ['GPL', 'AGPL', 'LGPL', 'NGPL'].includes(license),
-      additionalFiles: {
-        'license-summary.json': packages => {
-          return JSON.stringify(
-            packages.reduce(
-              (prev, { license }) => ({
-                ...prev,
-                [license]: prev[license] ? prev[license] + 1 : 1,
-              }),
-              {}
-            ),
-            null,
-            2
-          )
-        },
-      },
     })
   )
 }

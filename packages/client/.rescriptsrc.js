@@ -30,6 +30,9 @@ module.exports = [
       config = appendWebpackPlugin(
         new LicensePlugin({
           outputFilename: 'license-list.json',
+          licenseOverrides: {
+            'trim@0.0.1': 'MIT'
+          },
           unacceptableLicenseTest: license =>
             ['GPL', 'AGPL', 'LGPL', 'NGPL'].includes(license),
         }),

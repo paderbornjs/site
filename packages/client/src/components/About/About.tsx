@@ -1,11 +1,11 @@
 import React from 'react'
 import ColumnWrapper from '../ColumnWrapper'
 import Link from '../Link/Link'
-import SectionHeadline from '../SectionHeadline'
+import SectionHeading from '../SectionHeading'
 
 const About: React.FC = () => (
   <>
-    <SectionHeadline element="h2">About Paderborn.js</SectionHeadline>
+    <SectionHeading>About Paderborn.js</SectionHeading>
     <ColumnWrapper>
       <p>
         Paderborn.js is a usergroup focused on JavaScript and related topics. We

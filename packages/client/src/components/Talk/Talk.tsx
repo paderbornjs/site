@@ -1,89 +1,10 @@
+import raw from 'raw.macro'
 import React from 'react'
-import styled from 'styled-components/macro'
-import theme from '../../style/theme'
+import Markdown from 'react-markdown'
+import { Box, Text } from 'rebass'
 import { GetEventsQuery } from '../../typings/generated.d'
 import Link from '../Link'
-import { Description, Title } from './Talk.style'
-
-const Container = styled.li`
-  position: relative;
-  margin-bottom: ${props => props.theme.spacings[4]};
-
-  @media (min-width: 768px) {
-    flex: 1;
-
-    &:first-child {
-      margin-right: 32px;
-    }
-  }
-`
-
-interface ArrowPositionProps {
-  arrowPosition: 'left' | 'right'
-  theme: typeof theme
-}
-
-const positionArrow = () => (props: ArrowPositionProps) =>
-  `${props.arrowPosition}: ${props.theme.spacings[5]};`
-
-const Bubble = styled.div<ArrowPositionProps>`
-  padding: ${props => props.theme.spacings[2]};
-  margin: 0;
-  border-radius: ${props => props.theme.spacings[2]};
-  border: 2px solid ${props => props.theme.colors.gray[4]};
-  background: ${props => props.theme.colors.gray[5]};
-  position: relative;
-  z-index: 0;
-
-  &::before,
-  &::after {
-    ${positionArrow()}
-    display: block;
-    position: absolute;
-    bottom: -18px;
-    width: 0;
-    height: 0;
-    content: ' ';
-    border: solid 20px transparent;
-    border-bottom: 0;
-    border-top-color: ${props => props.theme.colors.gray[5]};
-    overflow: hidden;
-    z-index: 2;
-  }
-
-  &::before {
-    bottom: -20px;
-    border-top-color: ${props => props.theme.colors.gray[4]};
-    z-index: 1;
-  }
-
-  @media (min-width: 550px) and (max-width: 767px) {
-    border-width: 3px;
-    padding: ${props => props.theme.spacings[3]};
-
-    &::before {
-      bottom: -22px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    border-width: 4px;
-    padding: ${props => props.theme.spacings[4]};
-
-    &::before {
-      bottom: -24px;
-    }
-  }
-`
-
-const Speaker = styled.div<ArrowPositionProps>`
-  margin-top: ${props => props.theme.spacings[4]};
-  margin-left: ${props =>
-    props.arrowPosition === 'left' ? props.theme.spacings[4] : 0};
-  margin-right: ${props =>
-    props.arrowPosition === 'right' ? props.theme.spacings[4] : 0};
-  text-align: ${props => props.arrowPosition};
-`
+import { Bubble } from './Talk.style'
 
 interface LinkRendererProps {
   href: string
@@ -98,44 +19,28 @@ interface TalkProps {
 
 const Talk: React.FC<TalkProps> = ({ arrowPosition, slot }) => {
   return (
-    <Container>
-      <Bubble arrowPosition={arrowPosition}>
-        {slot ? (
-          <React.Fragment>
-            <Title>{slot.title}</Title>
-            <Description
-              source={slot.description}
-              skipHtml={true}
-              renderers={{
-                link: LinkRenderer,
-              }}
-            />
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <Title>Open slot</Title>
-            <p>
-              This slot is still open. Feel free to{' '}
-              <Link href="https://github.com/paderbornjs/talks#submitting-a-talk">
-                submit a talk
-              </Link>
-              ! First-timers and beginners are welcome. We manage a list of{' '}
-              <Link href="https://github.com/paderbornjs/talks/issues?q=is%3Aissue+is%3Aopen+label%3A%22Talk+Idea%22">
-                talk ideas
-              </Link>{' '}
-              on our Github talks repository.
-            </p>
-            <p>
-              Lightning talks or short presentations of something you’ve built
-              are awesome. You don’t need a polished set of slides!
-            </p>
-          </React.Fragment>
-        )}
+    <Box as="li" flex={['auto', 'auto', 1]} mb={6} mr={5}>
+      <Bubble arrowPosition={arrowPosition} p={[4, 4, 5]} pb={[3, 3, 3]}>
+        <Text as="h3" fontSize={[2, 3, 4]} fontWeight={500} mt={0} mb={3}>
+          {slot ? slot.title : 'Open slot'}
+        </Text>
+        <Markdown
+          source={slot ? slot.description : raw('./openSlot.md')}
+          skipHtml={true}
+          renderers={{
+            link: LinkRenderer,
+          }}
+        />
       </Bubble>
-      <Speaker arrowPosition={arrowPosition}>
+      <Text
+        textAlign={arrowPosition}
+        mt={5}
+        ml={arrowPosition === 'left' ? 4 : 0}
+        mr={arrowPosition === 'right' ? 4 : 0}
+      >
         {slot ? (
-          <React.Fragment>
-            <div style={{ fontWeight: 500 }}>{slot.speaker.name}</div>
+          <>
+            <b>{slot.speaker.name}</b>
             <div>{slot.speaker.occupation}</div>
             {slot.speaker.socialName && slot.speaker.socialUrl && (
               <div>
@@ -144,12 +49,12 @@ const Talk: React.FC<TalkProps> = ({ arrowPosition, slot }) => {
                 </Link>
               </div>
             )}
-          </React.Fragment>
+          </>
         ) : (
-          <React.Fragment>This might be you 👍</React.Fragment>
+          <>This might be you 👍</>
         )}
-      </Speaker>
-    </Container>
+      </Text>
+    </Box>
   )
 }
 

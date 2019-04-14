@@ -1,39 +1,33 @@
 import React from 'react'
-import { Inner, Outer } from './Slanted.style'
+import { Flex } from 'rebass'
+import 'styled-components/macro'
+import { Outer } from './Slanted.style'
 
-export type SlantValue =
-  | -8
-  | -7
-  | -6
-  | -5
-  | -4
-  | -3
-  | -2
-  | -1
-  | 0
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
+export type SlantValue = -3 | -2 | -1 | 0 | 1 | 2 | 3
 
 export interface Props {
-  type?: 'dark' | 'light' | 'white'
+  type?: 'dark' | 'light'
   slantBottom?: SlantValue
   slantTop?: SlantValue
 }
 
 const Slanted: React.FC<Props> = ({
-  type = 'white',
+  type = 'light',
   children,
   slantBottom,
   slantTop,
 }) => (
   <Outer type={type} slantBottom={slantBottom} slantTop={slantTop}>
-    <Inner>{children}</Inner>
+    <Flex
+      flexDirection="column"
+      px={[4, 5, 6]}
+      py={[5, 6, 7]}
+      mx="auto"
+      my={0}
+      css={{ maxWidth: 1000 }}
+    >
+      {children}
+    </Flex>
   </Outer>
 )
 

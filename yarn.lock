@@ -3549,7 +3549,7 @@ babel-plugin-macros@2.5.0:
     cosmiconfig "^5.0.5"
     resolve "^1.8.1"
 
-babel-plugin-macros@^2.5.0:
+babel-plugin-macros@^2.1.0, babel-plugin-macros@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-macros/-/babel-plugin-macros-2.5.1.tgz#4a119ac2c2e19b458c259b9accd7ee34fd57ec6f"
   integrity sha512-xN3KhAxPzsJ6OQTktCanNpIFnnMsCV+t8OloKxIL72D6+SUZYFn9qfklPgef5HyyDtzYZqqb+fs1S12+gQY82Q==
@@ -11296,11 +11296,6 @@ pify@^4.0.0, pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
-pigeon-maps@^0.11.11:
-  version "0.11.11"
-  resolved "https://registry.yarnpkg.com/pigeon-maps/-/pigeon-maps-0.11.11.tgz#a263f1faa733bee0dcde9513118dd491cd5a975e"
-  integrity sha512-1dU8YsRRVmK0CAAP8g4rOD73QmwJxl4VWpVqMQBtCc6nqwPD7EdFsNU00QaxxGwZt3ContIWAhRg1aF3OLp2bA==
-
 pinkie-promise@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pinkie-promise/-/pinkie-promise-2.0.1.tgz#2135d6dfa7a358c069ac9b178776288228450ffa"
@@ -12391,6 +12386,13 @@ raw-body@2.3.3:
     http-errors "1.6.3"
     iconv-lite "0.4.23"
     unpipe "1.0.0"
+
+raw.macro@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/raw.macro/-/raw.macro-0.3.0.tgz#b62391c5c7a77fd5673b688ac031ba0c5cbff1dc"
+  integrity sha512-VGX8RNUyZ7cZDa4dM8tvysaqryMSQRPbZqmTKKIur2uaGbpmG9Jj9CAY3ndpO8J3RMu0zf2K0JvIwbYMS29TOQ==
+  dependencies:
+    babel-plugin-macros "^2.1.0"
 
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
   version "1.2.8"

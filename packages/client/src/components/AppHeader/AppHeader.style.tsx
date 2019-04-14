@@ -1,19 +1,5 @@
+import { Image } from 'rebass'
 import styled, { keyframes } from 'styled-components/macro'
-import { ReactComponent as JavaScriptLogo } from './javascript.svg'
-
-export const Container = styled.h1`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: ${props => props.theme.spacings[4]} 0 -54px 0;
-
-  @media (min-width: 550px) and (max-width: 767px) {
-    margin: ${props => props.theme.spacings[5]} 0 -66px 0;
-  }
-  @media (min-width: 768px) {
-    margin: ${props => props.theme.spacings[6]} 0 -88px 0;
-  }
-`
 
 const jAnimation = keyframes`
   0% { stroke-dashoffset: 881; }
@@ -31,31 +17,22 @@ const sAnimation = keyframes`
   100% { stroke-dashoffset: 0; fill: rgba(0, 0, 0, 1); }
 `
 
-export const Logo = styled(JavaScriptLogo)`
+export const Logo = styled(Image)`
   z-index: 1;
-  margin: ${props => props.theme.spacings[4]};
-  height: ${props => props.theme.spacings[6]};
 
-  @media (min-width: 550px) and (max-width: 767px) {
-    height: ${props => props.theme.spacings[7]};
-  }
-  @media (min-width: 768px) {
-    height: ${props => props.theme.spacings[8]};
-  }
-
-  .logo path:nth-of-type(1) {
+  .logo path {
     fill: none;
     stroke: black;
     stroke-width: 4;
+  }
+
+  .logo path:nth-of-type(1) {
     stroke-dasharray: 881;
     stroke-dashoffset: 881;
     animation: ${jAnimation} 2s linear 1s forwards;
   }
 
   .logo path:nth-of-type(2) {
-    fill: none;
-    stroke: black;
-    stroke-width: 4;
     stroke-dasharray: 1241;
     stroke-dashoffset: 1241;
     animation: ${sAnimation} 2s linear 1s forwards;

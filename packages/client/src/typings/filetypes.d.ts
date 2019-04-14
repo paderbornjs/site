@@ -8,6 +8,11 @@ declare module '*.graphql' {
   export default value
 }
 
+declare module '*.md' {
+  const value: string
+  export default value
+}
+
 declare module '*.svg' {
   const content: string
   const ReactComponent: React.StatelessComponent<

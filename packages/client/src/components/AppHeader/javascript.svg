@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 3150 630">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 3150 630" role="img" aria-labelledby="paderbornjs-title">
+  <title id="paderbornjs-title">Paderborn.js</title>
   <defs>
     <clipPath id="textClip">
-      <text x="0" y="315" dominant-baseline="central" font-family="Helvetica,sans-serif" font-size="350" font-weight="800">PADERBORN</text>
+      <text x="0" y="455" font-family="Helvetica,sans-serif" font-size="350" font-weight="800">PADERBORN</text>
     </clipPath>
-    <title id="title">Paderborn.js</title>
   </defs>
   <g clip-path="url(#textClip)">
     <path d="M1367,259L1128,-125L1004,261Z" fill="#556c8d" stroke="#556c8d" stroke-width="1.51"/>

@@ -5,26 +5,25 @@ const GlobalStyle = createGlobalStyle<{}>`
   box-sizing: border-box;
 }
 html {
-  font-size: ${props => props.theme.fontSizes[2]};
   overflow-x: hidden;
 }
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;
+  font-family: ${props => props.theme.fonts.sans};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: ${props => props.theme.colors.blue[0]};
   background: ${props => props.theme.colors.gray[4]};
   line-height: 1.625;
   overflow-x: hidden;
-  font-size: ${props => props.theme.fontSizes[1]};
 
-  @media (min-width: 550px) and (max-width: 767px) {
-    font-size: ${props => props.theme.fontSizes[2]};
+  font-size: ${props => props.theme.fontSizes[1]}px;
+  @media (min-width: 550px) {
+    font-size: ${props => props.theme.fontSizes[2]}px;
   }
   @media (min-width: 768px) {
-    font-size: ${props => props.theme.fontSizes[3]};
+    font-size: ${props => props.theme.fontSizes[3]}px;
   }
 }
 a, a:link, a:visited, a:focus, a:hover, a:active {
@@ -32,12 +31,17 @@ a, a:link, a:visited, a:focus, a:hover, a:active {
   text-decoration: none;
 }
 p {
-  margin: 0 0 ${props => props.theme.spacings[3]} 0;
+  margin: 0 0 ${props => props.theme.space[3]}px 0;
 }
-ul, ol {
+ul, ol, figure {
   margin: 0;
   padding: 0;
+}
+ul, ol {
   list-style-type: none;
+}
+b {
+  font-weight: 500;
 }
 `
 

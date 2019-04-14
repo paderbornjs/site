@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { PoseGroup } from 'react-pose'
 import { Flex } from 'rebass'
 import useImageLoadingState from '../../hooks/useImageLoadingState'
 import { useGetOrganizersQuery } from '../../typings/generated.d'
 import LoadingIndicator from '../LoadingIndicator'
-import OrganizerCard from '../OrganizerCard'
-import SectionHeadline from '../SectionHeadline'
-import { List, ListItem } from './OrganizerList.style'
+import OrganizerDetails from '../OrganizerDetails'
+import SectionHeading from '../SectionHeading'
 
 const OrganizerList: React.FC = () => {
   const { data, error, loading: queryLoading } = useGetOrganizersQuery()
@@ -31,16 +29,27 @@ const OrganizerList: React.FC = () => {
 
   return (
     <>
-      <SectionHeadline element="h2">Organizers</SectionHeadline>
-      <List>
-        <PoseGroup animateOnMount={true}>
-          {data!.organizers.map((organizer, i) => (
-            <ListItem key={i} itemIndex={i}>
-              <OrganizerCard itemIndex={i} organizer={organizer} />
-            </ListItem>
-          ))}
-        </PoseGroup>
-      </List>
+      <SectionHeading>Organizers</SectionHeading>
+      <Flex
+        as="ul"
+        flexDirection={['column', 'row', 'row']}
+        p={0}
+        mb={-6}
+        mr={-6}
+      >
+        {data!.organizers.map((organizer, i) => (
+          <Flex
+            key={i}
+            as="li"
+            justifyContent="center"
+            flex="1 1 50%"
+            mb={6}
+            mr={6}
+          >
+            <OrganizerDetails itemIndex={i} organizer={organizer} />
+          </Flex>
+        ))}
+      </Flex>
     </>
   )
 }

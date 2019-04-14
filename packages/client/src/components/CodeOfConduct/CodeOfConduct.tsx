@@ -1,11 +1,11 @@
 import React from 'react'
 import ColumnWrapper from '../ColumnWrapper'
 import Link from '../Link/Link'
-import SectionHeadline from '../SectionHeadline'
+import SectionHeading from '../SectionHeading'
 
 const CodeOfConduct: React.FC = () => (
   <>
-    <SectionHeadline element="h2">Code of Conduct</SectionHeadline>
+    <SectionHeading>Code of Conduct</SectionHeading>
     <ColumnWrapper>
       <p>
         This meetup’s primary goal is to have an awesome, inclusive and safe
