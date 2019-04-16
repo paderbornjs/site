@@ -4,23 +4,23 @@
   "version": "1.0.0",
   "scripts": {
     "start": "yarn run dev",
-    "dev": "npm-run-all --parallel dev:kill dev:clear --serial dev:serve",
-    "dev:kill": "kill-port 4000",
+    "dev": "npm-run-all --parallel dev:kill dev:clear --serial dev:lambda",
+    "dev:kill": "kill-port 9000",
     "dev:clear": "shx rm -rf build",
     "dev:serve": "cross-env NODE_ENV=development PORT=4000 webpack --watch",
+    "dev:lambda": "netlify-lambda serve --config webpack.lambda.js src/functions",
     "precommit": "lint-staged",
-    "build": "cross-env NODE_ENV=production npm-run-all build:clean build:webpack",
+    "build": "cross-env NODE_ENV=production npm-run-all build:clean build:lambda",
     "build:clean": "shx rm -rf build",
     "build:webpack": "webpack",
+    "build:lambda": "netlify-lambda build --config webpack.lambda.js src/functions",
     "serve": "cross-env PORT=444 NODE_ENV=production node build/api.js",
     "test": "is-ci \"test:ci\" \"test:watch\"",
     "test:ci": "cross-env CI=true npm-run-all test:clear test:jest",
     "test:clear": "shx rm -rf coverage",
     "test:jest": "jest --coverage --colors --runInBand",
     "test:watch": "jest --watch",
-    "lint": "eslint --ext .js --ext .ts src",
-    "ls": "netlify-lambda serve --config webpack.lambda.js src/functions",
-    "lb": "netlify-lambda build --config webpack.lambda.js src/functions"
+    "lint": "eslint --ext .js --ext .ts src"
   },
   "lint-staged": {
     "linters": {
