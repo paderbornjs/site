@@ -1,7 +1,6 @@
 const DotenvPlugin = require('dotenv-webpack')
 
 module.exports = {
-  externals: ['bufferutil', 'utf-8-validate'],
   plugins: [new DotenvPlugin()],
   module: {
     rules: [
