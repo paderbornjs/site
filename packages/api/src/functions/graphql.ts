@@ -1,11 +1,7 @@
-import { ApolloServer, makeExecutableSchema } from 'apollo-server-lambda'
-import * as typeDefs from '../../../schema/schema.graphql'
+import { ApolloServer, makeExecutableSchema, gql } from 'apollo-server-lambda'
 import resolvers from '../resolvers'
 import createContext from '../utils/createContext'
-import getEnvironmentVariable from '../utils/getEnvironmentVariable'
-
-const nodeEnv = getEnvironmentVariable('NODE_ENV')
-const isDevEnvironment = nodeEnv === 'development'
+import typeDefs from '../../../schema/schema.graphql'
 
 const schema = makeExecutableSchema({
   resolvers,
@@ -13,8 +9,7 @@ const schema = makeExecutableSchema({
 })
 
 const server = new ApolloServer({
-  debug: isDevEnvironment,
-  playground: isDevEnvironment,
+  debug: true,
   schema,
   context: createContext,
 })
@@ -22,6 +17,11 @@ const server = new ApolloServer({
 // @todo implement cors origin logic from node-cors into apollo-server-lambda
 // https://github.com/expressjs/cors/blob/master/lib/index.js
 // https://github.com/apollographql/apollo-server/blob/master/packages/apollo-server-lambda/src/ApolloServer.ts
-const handler = server.createHandler()
+const handler = server.createHandler({
+  cors: {
+    origin: '*',
+    allowedHeaders: '*',
+  },
+})
 
 export { handler }

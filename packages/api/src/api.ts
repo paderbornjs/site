@@ -11,10 +11,8 @@ import helmet from 'helmet'
 import * as typeDefs from '../../schema/schema.graphql'
 import resolvers from './resolvers'
 import createContext from './utils/createContext'
-import getEnvironmentVariable from './utils/getEnvironmentVariable'
 
-const nodeEnv = getEnvironmentVariable('NODE_ENV')
-const isDevEnvironment = nodeEnv === 'development'
+const isDev = process.env.NODE_ENV === 'development'
 
 const app = express().use(helmet())
 
@@ -23,7 +21,7 @@ const schema = makeExecutableSchema({
   typeDefs,
 })
 
-if (isDevEnvironment) {
+if (isDev) {
   addMockFunctionsToSchema({
     schema,
     mocks: {
@@ -36,8 +34,8 @@ if (isDevEnvironment) {
 }
 
 const server = new ApolloServer({
-  debug: isDevEnvironment,
-  playground: isDevEnvironment,
+  debug: isDev,
+  playground: isDev,
   schema,
   context: createContext,
 })
@@ -46,7 +44,7 @@ server.applyMiddleware({
   app,
   path: '/',
   cors: {
-    origin: isDevEnvironment
+    origin: isDev
       ? '*'
       : [
           'https://paderbornjs.org',

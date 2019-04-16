@@ -34,6 +34,7 @@ const client = new ApolloClient({
         process.env.NODE_ENV === 'production'
           ? 'https://api.paderbornjs.org'
           : 'http://localhost:4000',
+      // : 'http://localhost:9000/graphql'
     }),
   ]),
 })

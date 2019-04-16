@@ -2,7 +2,6 @@ import EventTalksLoader from '../loaders/EventTalksLoader'
 import GithubService from '../services/GithubService'
 import MeetupService from '../services/MeetupService'
 import TwitterService from '../services/TwitterService'
-import getEnvironmentVariable from './getEnvironmentVariable'
 
 export interface ContextType {
   eventTalksLoader: EventTalksLoader
@@ -11,9 +10,19 @@ export interface ContextType {
 }
 
 export default function createContext(): ContextType {
-  const twitterApiKey = getEnvironmentVariable('TWITTER_API_KEY')
-  const twitterApiSecret = getEnvironmentVariable('TWITTER_API_SECRET')
-  const meetupKey: string = getEnvironmentVariable('MEETUP_KEY')
+  if (!process.env.TWITTER_API_KEY) {
+    throw new Error(`missing env variable: 'TWITTER_API_KEY'`)
+  }
+  if (!process.env.TWITTER_API_SECRET) {
+    throw new Error(`missing env variable: 'TWITTER_API_SECRET'`)
+  }
+  if (!process.env.MEETUP_KEY) {
+    throw new Error(`missing env variable: 'MEETUP_KEY'`)
+  }
+
+  const twitterApiKey = process.env.TWITTER_API_KEY
+  const twitterApiSecret = process.env.TWITTER_API_SECRET
+  const meetupKey: string = process.env.MEETUP_KEY
 
   return {
     eventTalksLoader: new EventTalksLoader(
