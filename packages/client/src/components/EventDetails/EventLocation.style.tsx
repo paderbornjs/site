@@ -6,20 +6,21 @@ export const CallToAction = styled(Link)`
   font-weight: 700;
   cursor: pointer;
   display: inline-block;
-  border: 1px solid ${props => props.theme.colors.blue[4]};
+  border: 1px solid ${props => props.theme.colors.primaryMBright};
+  transition: background 0.3s ease-in-out;
 
   &:link,
   &:visited,
   &:focus,
   &:hover,
   &:active {
-    color: ${props => props.theme.colors.blue[3]};
+    color: ${props => props.theme.colors.primaryMedium};
   }
 
   &:focus,
   &:hover,
   &:active {
-    background: ${props => props.theme.colors.blue[6]};
-    border: 1px solid ${props => props.theme.colors.blue[3]};
+    background: ${props => props.theme.colors.primaryXBright};
+    border: 1px solid ${props => props.theme.colors.primaryMedium};
   }
 `

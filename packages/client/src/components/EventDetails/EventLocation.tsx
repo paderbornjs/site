@@ -4,25 +4,24 @@ import { GetEventsQuery } from '../../typings/generated.d'
 import { CallToAction } from './EventLocation.style'
 import { ReactComponent as SvgMapIllustration } from './map.svg'
 
-type Venue = GetEventsQuery['upcomingEvents'][0]['venue']
-
 interface EventLocationProps {
-  venue: Venue
+  venue: GetEventsQuery['upcomingEvents'][0]['venue']
   url: string
 }
+
 const EventLocation: React.FC<EventLocationProps> = ({ venue, url }) => {
   return (
-    <Flex justifyContent="center" mt={[4, 4, 5]} mb={[5, 5, 6]}>
+    <Flex justifyContent="center" mb={[5, 6, 7]} mt={[4, 4, 5]}>
       <Link
-        mr={5}
         href={`https://www.google.com/maps/dir//${venue.name},${venue.street},${
           venue.city
         }/@${venue.lat},${venue.lon},13z`}
+        mr={5}
       >
         <Image
           as={SvgMapIllustration}
-          width={[120, 150, 200]}
           height={[105, 131, 175]}
+          width={[120, 150, 200]}
         />
       </Link>
       <Flex flexDirection="column" justifyContent="center">
@@ -31,11 +30,11 @@ const EventLocation: React.FC<EventLocationProps> = ({ venue, url }) => {
         {venue.city !== 'Paderborn' && <div>{venue.city}</div>}
         <div>
           <CallToAction
-            href={url}
             fontSize={[2, 3, 4]}
+            href={url}
             mt={[3, 3, 4]}
-            py={[0, 1, 2]}
             px={[2, 3, 4]}
+            py={[0, 1, 2]}
           >
             Sign up!
           </CallToAction>

@@ -5,8 +5,8 @@ import AppHeader from '../AppHeader'
 import CodeOfConduct from '../CodeOfConduct'
 import EventList from '../EventList'
 import OrganizerList from '../OrganizerList'
-import Slanted from '../Slanted'
 import SponsorList from '../SponsorList'
+import Section from '../Section'
 
 const App: React.FC = () => {
   return (
@@ -14,21 +14,21 @@ const App: React.FC = () => {
       <Helmet defaultTitle="Paderborn.JS" titleTemplate="%s – Paderborn.JS" />
       <AppHeader />
       <main>
-        <Slanted>
+        <Section bright>
           <EventList />
-        </Slanted>
-        <Slanted type="dark">
+        </Section>
+        <Section>
           <About />
-        </Slanted>
-        <Slanted>
+        </Section>
+        <Section bright>
           <OrganizerList />
-        </Slanted>
-        <Slanted type="dark">
-          <SponsorList />
-        </Slanted>
-        <Slanted>
+        </Section>
+        <Section>
           <CodeOfConduct />
-        </Slanted>
+        </Section>
+        <Section bright>
+          <SponsorList />
+        </Section>
       </main>
     </>
   )

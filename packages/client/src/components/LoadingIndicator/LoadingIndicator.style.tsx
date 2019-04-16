@@ -34,7 +34,7 @@ export const Ball = styled.div<{ index: number }>`
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  border: 1px solid ${props => props.theme.colors.blue[0]};
+  border: 1px solid ${props => props.theme.colors.primaryXDark};
   top: ${props => (props.index === 1 ? 0 : 36)}px;
   left: ${props => props.index * 18}px;
 `

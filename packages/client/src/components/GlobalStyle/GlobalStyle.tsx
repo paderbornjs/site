@@ -13,8 +13,8 @@ body {
   font-family: ${props => props.theme.fonts.sans};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: ${props => props.theme.colors.blue[0]};
-  background: ${props => props.theme.colors.gray[4]};
+  color: ${props => props.theme.colors.primaryXDark};
+  background: ${props => props.theme.colors.greyMBright};
   line-height: 1.625;
   overflow-x: hidden;
 
@@ -27,7 +27,7 @@ body {
   }
 }
 a, a:link, a:visited, a:focus, a:hover, a:active {
-  color: ${props => props.theme.colors.blue[3]};
+  color: ${props => props.theme.colors.primaryMedium};
   text-decoration: none;
 }
 p {

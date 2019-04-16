@@ -1,7 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.organizeImports": false
   },
   "editor.snippetSuggestions": "top",
 
@@ -41,25 +41,40 @@
   ],
   "eslint.validate": [
     {
-      "language": "javascript",
-      "autoFix": true
+      "language": "javascript"
     },
     {
-      "language": "javascriptreact",
-      "autoFix": true
+      "language": "javascriptreact"
     },
     {
-      "language": "typescript",
-      "autoFix": true
+      "language": "typescript"
     },
     {
-      "language": "typescriptreact",
-      "autoFix": true
+      "language": "typescriptreact"
     }
   ],
+
+  "prettier.eslintIntegration": true,
 
   // versionlens
   "versionlens.showVersionLensesAtStartup": false,
   "versionlens.showDependencyStatusesAtStartup": false,
-  "[handlebars]": { "editor.formatOnSave": false }
+
+  "[handlebars]": {
+    "editor.formatOnSave": false
+  },
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

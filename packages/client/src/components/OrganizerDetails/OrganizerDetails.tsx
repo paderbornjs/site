@@ -16,17 +16,17 @@ const OrganizerDetails: React.FC<OrganizerDetailsProps> = ({
   organizer: { name, description, twitterName, profileImageUrl },
 }) => {
   return (
-    <Wrapper flexDirection="column" alignItems="center">
+    <Wrapper alignItems="center" flexDirection="column">
       <Box mb={4}>
         <ProfileImage
           as="svg"
-          width="250"
-          viewBox="0 0 100 100"
           preserveAspectRatio="xMidYMid slice"
+          viewBox="0 0 100 100"
+          width="225"
         >
           <defs>
             <clipPath id="clip">
-              <rect x="0" y="0" width="100%" height="100%" rx="50%" />
+              <rect height="100%" rx="50%" width="100%" x="0" y="0" />
             </clipPath>
             <filter id="duotone">
               <feColorMatrix
@@ -35,43 +35,45 @@ const OrganizerDetails: React.FC<OrganizerDetailsProps> = ({
               />
             </filter>
             <image
+              clipPath="url(#clip)"
+              height="100%"
               href={profileImageUrl}
               id={`profile-${twitterName}`}
               preserveAspectRatio="xMidYMid slice"
-              clipPath="url(#clip)"
               width="100%"
-              height="100%"
             />
           </defs>
           <use href={`#profile-${twitterName}`} x="0" y="0" />
-          <use href={`#profile-${twitterName}`} filter="url(#duotone)" />
+          <use filter="url(#duotone)" href={`#profile-${twitterName}`} />
         </ProfileImage>
       </Box>
       <Text fontSize={[4, 4, 5]} fontWeight={500} mb={0}>
         {name}
       </Text>
       <Link href={`http://twitter.com/${twitterName}`} mb={3}>
-        <Flex as="span" alignItems="center">
-          <Image as={TwitterLogo} mr={2} width={24} height={24} />
+        <Flex alignItems="center" as="span">
+          <Image as={TwitterLogo} height={24} mr={2} width={24} />
           {twitterName}
         </Flex>
       </Link>
-      <Text as="p" textAlign="center" mb={0} css={{ maxWidth: '350px' }}>
-        {description.split(/(@.*?|#.*?)\s/g).map(part =>
-          part.startsWith('@') ? (
-            <>
-              <Link href={`https://twitter.com/${part.substring(1)}`}>
-                {part}
-              </Link>{' '}
-            </>
-          ) : part.startsWith('#') ? (
-            <Text as="em" fontWeight={500} css={{ fontStyle: 'normal' }}>
-              {part}{' '}
-            </Text>
-          ) : (
-            part
-          )
-        )}
+      <Text as="p" css={{ maxWidth: '350px' }} mb={0} textAlign="center">
+        {description.split(/(@.*?|#.*?)\s/g).map((part, i) => (
+          <React.Fragment key={i}>
+            {part.startsWith('@') ? (
+              <>
+                <Link href={`https://twitter.com/${part.substring(1)}`}>
+                  {part}
+                </Link>{' '}
+              </>
+            ) : part.startsWith('#') ? (
+              <Text as="em" css={{ fontStyle: 'normal' }} fontWeight={500}>
+                {part}{' '}
+              </Text>
+            ) : (
+              part
+            )}
+          </React.Fragment>
+        ))}
       </Text>
     </Wrapper>
   )

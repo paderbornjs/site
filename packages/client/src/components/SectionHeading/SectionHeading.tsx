@@ -5,12 +5,12 @@ const SectionHeading: React.FC<HeadingProps> = ({ children, ...rest }) => {
   return (
     <Heading
       as="h2"
-      textAlign="center"
-      fontSize={[4, 6, 7]}
       fontFamily="serif"
+      fontSize={[4, 6, 6]}
       fontWeight={300}
+      mb={[4, 5, 6]}
       mt={0}
-      mb={[5, 6, 7]}
+      textAlign="center"
       {...rest}
     >
       {children}

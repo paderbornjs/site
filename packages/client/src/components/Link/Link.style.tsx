@@ -9,6 +9,7 @@ export const StyledLink = styled(Link)`
   white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
+  z-index: 1;
 
   &,
   &:link,
@@ -16,7 +17,7 @@ export const StyledLink = styled(Link)`
   &:focus,
   &:hover,
   &:active {
-    color: ${props => props.theme.colors.blue[3]};
+    color: ${props => props.theme.colors.primaryMedium};
   }
 
   &:focus,
@@ -35,20 +36,20 @@ export const StyledLink = styled(Link)`
     content: '';
     transition: transform 0.15s;
     pointer-events: none;
-    backface-visibility: hidden;
   }
 
   &::before {
-    border-top: 1px solid ${props => props.theme.colors.blue[5]};
+    border-top: 1px solid ${props => props.theme.colors.primaryBright};
     background: transparent;
     transition-delay: 0.15s;
     transform: translateY(calc(100% - 2px));
+    z-index: -1;
   }
 
   &::after {
-    z-index: -1;
-    background: ${props => props.theme.colors.blue[6]};
+    background: ${props => props.theme.colors.primaryXBright};
     transform: translateY(-100%);
+    z-index: -2;
   }
 
   &:focus::after,

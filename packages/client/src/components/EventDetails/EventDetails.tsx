@@ -30,9 +30,9 @@ const EventDetails: React.FC<EventDetailsProps> = ({
           ...Array.from({ length: slotCount - talks.length }).map(() => null),
         ].map((slot, i) => (
           <Talk
+            arrowPosition={i % 2 === 0 ? 'right' : 'left'}
             key={i}
             slot={slot}
-            arrowPosition={i % 2 === 0 ? 'right' : 'left'}
           />
         ))}
       </Flex>

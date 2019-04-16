@@ -33,16 +33,16 @@ const OrganizerList: React.FC = () => {
       <Flex
         as="ul"
         flexDirection={['column', 'row', 'row']}
-        p={0}
         mb={-6}
         mr={-6}
+        p={0}
       >
         {data!.organizers.map((organizer, i) => (
           <Flex
-            key={i}
             as="li"
-            justifyContent="center"
             flex="1 1 50%"
+            justifyContent="center"
+            key={i}
             mb={6}
             mr={6}
           >

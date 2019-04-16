@@ -12,8 +12,8 @@ const positionArrow = () => (props: ArrowPositionProps) =>
 
 export const Bubble = styled(Box)<ArrowPositionProps>`
   border-radius: ${props => props.theme.space[2]}px;
-  border: 2px solid ${props => props.theme.colors.gray[4]};
-  background: ${props => props.theme.colors.gray[5]};
+  border: 2px solid ${props => props.theme.colors.greyMBright};
+  background: ${props => props.theme.colors.greyBright};
   position: relative;
   z-index: 0;
 
@@ -28,14 +28,14 @@ export const Bubble = styled(Box)<ArrowPositionProps>`
     content: ' ';
     border: solid 20px transparent;
     border-bottom: 0;
-    border-top-color: ${props => props.theme.colors.gray[5]};
+    border-top-color: ${props => props.theme.colors.greyBright};
     overflow: hidden;
     z-index: 2;
   }
 
   &::before {
     bottom: -20px;
-    border-top-color: ${props => props.theme.colors.gray[4]};
+    border-top-color: ${props => props.theme.colors.greyMBright};
     z-index: 1;
   }
 `
