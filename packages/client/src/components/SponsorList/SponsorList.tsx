@@ -10,7 +10,12 @@ import { ReactComponent as SputnikLogo } from './sputnik.svg'
 const SponsorList: React.FC = () => (
   <>
     <SectionHeading>Sponsors</SectionHeading>
-    <Flex as="ul" flexWrap="wrap" justifyContent="center" mr={[-5, -6, -7]}>
+    <p>
+      Sponsors that provide expense reimbursements for hosting, domain and the{' '}
+      <Link href="https://meetup.com/paderborn-js">meetup.com</Link> account are
+      welcome and will be linked both here and on the meetup.com page.
+    </p>
+    {/* <Flex as="ul" flexWrap="wrap" justifyContent="center" mr={[-5, -6, -7]}>
       <SponsorDetails logo={DspaceLogo}>
         encourages Christoph to work on Paderborn.js in his spare time and is
         looking for{' '}
@@ -30,7 +35,7 @@ const SponsorList: React.FC = () => (
         provides our Paderborn.js location. Have a few drinks and spread the
         word, if you like it!
       </SponsorDetails>
-    </Flex>
+    </Flex> */}
   </>
 )
 
