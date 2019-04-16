@@ -32,7 +32,7 @@ const client = new ApolloClient({
       credentials: 'same-origin',
       uri:
         process.env.NODE_ENV === 'production'
-          ? 'https://paderbornjs.netlify.com/.netlify/functions/graphql' // 'https://api.paderbornjs.org'
+          ? '/.netlify/functions/graphql' // 'https://api.paderbornjs.org'
           : 'http://localhost:9000/graphql', // 'http://localhost:4000'
     }),
   ]),
