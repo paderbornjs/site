@@ -1,3 +1,4 @@
+import centered from '@storybook/addon-centered/react'
 import { addDecorator, configure } from '@storybook/react'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
@@ -10,6 +11,7 @@ const loadStories = () => {
   req.keys().forEach(filename => req(filename))
 }
 
+addDecorator(centered)
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>)
 
 configure(loadStories, module)
