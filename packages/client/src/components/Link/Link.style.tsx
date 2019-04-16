@@ -8,6 +8,7 @@ export const StyledLink = styled(Link)`
   vertical-align: bottom;
   white-space: nowrap;
   overflow: hidden;
+  cursor: pointer;
 
   &,
   &:link,

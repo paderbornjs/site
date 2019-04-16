@@ -16,7 +16,8 @@
     "test:ci": "cross-env CI=true npm-run-all test:clear test:jest",
     "test:clear": "shx rm -rf coverage",
     "test:jest": "jest --coverage --colors --runInBand",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "storybook": "start-storybook"
   },
   "lint-staged": {
     "linters": {
@@ -54,12 +55,16 @@
     "@paderbornjs/schema": "1.0.0",
     "@rescripts/cli": "^0.0.10",
     "@rescripts/utilities": "^0.0.5",
+    "@storybook/addon-centered": "^5.0.8",
+    "@storybook/react": "^5.0.8",
     "@types/jest": "^24.0.9",
     "@types/node": "^11.9.5",
     "@types/react": "^16.8.5",
     "@types/react-dom": "^16.8.2",
     "@types/react-helmet": "^5.0.8",
     "@types/rebass": "^3.0.3",
+    "@types/storybook__addon-centered": "^3.4.0",
+    "@types/storybook__react": "^4.0.1",
     "@types/styled-components": "^4.1.11",
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
