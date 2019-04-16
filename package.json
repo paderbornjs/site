@@ -14,7 +14,8 @@
     "test:ci": "lerna run test:ci",
     "test:watch": "jest --watch",
     "release": "standard-version",
-    "start": "lerna run start --parallel"
+    "start": "lerna run start --parallel",
+    "storybook": "yarn workspace @paderbornjs/client storybook"
   },
   "husky": {
     "hooks": {
