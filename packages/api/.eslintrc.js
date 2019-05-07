@@ -11,10 +11,10 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'prettier/prettier': 1,
-    '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/no-parameter-properties': 0,
-    '@typescript-eslint/explicit-member-accessibility': 0,
+    'prettier/prettier': 'warn',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-parameter-properties': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 'off',
     'allow-typed-function-expressions': true,
   },
 }
