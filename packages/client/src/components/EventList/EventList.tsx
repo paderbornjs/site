@@ -17,12 +17,16 @@ export const Events: React.FC = () => {
     )
   }
 
-  return (
+  return data!.upcomingEvents.length ? (
     <ol>
       {[data!.upcomingEvents[0]].map(upcomingEvent => (
         <EventDetails event={upcomingEvent} key={upcomingEvent.date} />
       ))}
     </ol>
+  ) : (
+    <Flex justifyContent="center">
+      Usually, meetups are once a month - check back later for dates!
+    </Flex>
   )
 }
 
