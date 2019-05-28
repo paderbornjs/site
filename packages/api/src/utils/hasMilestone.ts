@@ -1,4 +1,5 @@
 import { GithubIssue } from '../services/GithubService'
+import { isBefore } from 'date-fns'
 
 /**
  * Returns true if the github issue has a future milestone,
@@ -13,14 +14,7 @@ const hasMilestone = (issue: GithubIssue): boolean => {
     return false
   }
 
-  const now = new Date()
-  const milestone = new Date(issue.milestone.due_on)
-
-  return (
-    now.getUTCFullYear() <= milestone.getUTCFullYear() &&
-    now.getUTCMonth() <= milestone.getUTCMonth() &&
-    now.getUTCDate() <= milestone.getUTCDate()
-  )
+  return isBefore(new Date(), new Date(issue.milestone.due_on))
 }
 
 export default hasMilestone
