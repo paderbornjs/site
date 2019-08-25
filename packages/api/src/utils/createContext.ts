@@ -16,20 +16,16 @@ export default function createContext(): ContextType {
   if (!process.env.TWITTER_API_SECRET) {
     throw new Error(`missing env variable: 'TWITTER_API_SECRET'`)
   }
-  if (!process.env.MEETUP_KEY) {
-    throw new Error(`missing env variable: 'MEETUP_KEY'`)
-  }
 
   const twitterApiKey = process.env.TWITTER_API_KEY
   const twitterApiSecret = process.env.TWITTER_API_SECRET
-  const meetupKey: string = process.env.MEETUP_KEY
 
   return {
     eventTalksLoader: new EventTalksLoader(
       { batch: true },
       new GithubService()
     ),
-    meetupService: new MeetupService(meetupKey),
+    meetupService: new MeetupService(),
     twitterService: new TwitterService(twitterApiKey, twitterApiSecret),
   }
 }

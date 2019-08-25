@@ -18,7 +18,7 @@ export interface MeetupEvent {
 export default class MeetupService {
   public static BASE_URL = 'https://api.meetup.com/paderborn-js'
 
-  public constructor(private meetupKey: string) {}
+  public constructor() {}
 
   public async fetchEventsByStatus(
     eventStatus: string
