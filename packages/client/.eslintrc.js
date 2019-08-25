@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'prettier', 'react-hooks'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
@@ -20,12 +20,12 @@ module.exports = {
     },
   },
   rules: {
-    'prettier/prettier': 1,
-    'react/jsx-sort-props': 2,
-    '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/no-non-null-assertion': 0,
-    '@typescript-eslint/explicit-member-accessibility': 0,
-    'react/prop-types': 0,
+    'prettier/prettier': 'warn',
+    'react/jsx-sort-props': 'error',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 'off',
+    'react/prop-types': 'off',
     'no-restricted-imports': [
       'error',
       {
@@ -38,5 +38,6 @@ module.exports = {
         patterns: ['!styled-components/macro'],
       },
     ],
+    'react-hooks/rules-of-hooks': 'error',
   },
 }

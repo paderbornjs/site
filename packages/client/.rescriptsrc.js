@@ -1,9 +1,26 @@
 const { appendWebpackPlugin } = require('@rescripts/utilities')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const LicensePlugin = require('webpack-license-plugin')
+const { edit, getPaths } = require('@rescripts/utilities')
 
 module.exports = [
-  // development
+  // use local eslint config with eslint-loader
+  config => {
+    return edit(
+      matchedSection => {
+        matchedSection.options.ignore = true
+        matchedSection.options.useEslintrc = true
+        return matchedSection
+      },
+      getPaths(
+        part => part && part.loader && part.loader.includes('eslint-loader'),
+        config
+      ),
+      config
+    )
+  },
+
+  // development specific
   config => {
     if (process.env.NODE_ENV === 'development') {
       config = {
@@ -15,7 +32,7 @@ module.exports = [
     return config
   },
 
-  // production
+  // production specific
   config => {
     if (process.env.NODE_ENV === 'production') {
       config = appendWebpackPlugin(
@@ -31,7 +48,7 @@ module.exports = [
         new LicensePlugin({
           outputFilename: 'license-list.json',
           licenseOverrides: {
-            'trim@0.0.1': 'MIT'
+            'trim@0.0.1': 'MIT',
           },
           unacceptableLicenseTest: license =>
             ['GPL', 'AGPL', 'LGPL', 'NGPL'].includes(license),

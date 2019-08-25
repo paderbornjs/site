@@ -3,11 +3,8 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
   resolver: 'jest-pnp-resolver',
   setupFiles: ['react-app-polyfill/jsdom'],
-  setupTestFrameworkScriptFile: '<rootDir>/src/test/setupTests.ts',
-  testMatch: [
-    '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
-    '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}',
-  ],
+  setupFilesAfterEnv: ['<rootDir>/src/test/setupTests.ts'],
+  testMatch: ['**/?(*.)+(spec|test).ts?(x)'],
   testEnvironment: 'jsdom',
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/../../node_modules/babel-jest',
