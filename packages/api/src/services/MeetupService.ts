@@ -24,10 +24,7 @@ export default class MeetupService {
     eventStatus: string
   ): Promise<MeetupEvent[]> {
     const cache = getResponseCache('MeetupService.fetchEventsByStatus')
-    const url = `${MeetupService.BASE_URL}/events?status=${eventStatus}&key=${
-      this.meetupKey
-    }`
-
+    const url = `${MeetupService.BASE_URL}/events?status=${eventStatus}`
     let responsePromise = cache.get(url)
     if (!responsePromise) {
       responsePromise = fetch(url)

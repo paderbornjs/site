@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "yarn run dev",
+    "start": "yarn run dev:lambda",
     "dev": "npm-run-all --parallel dev:kill dev:clear --serial dev:lambda",
     "dev:kill": "kill-port 9000",
     "dev:clear": "shx rm -rf build",
