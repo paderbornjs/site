@@ -1,7 +1,7 @@
 [build]
   functions = "packages/api/lambda"
   publish = "packages/client/build"
-  command = "yarn build"
+  command = "CI=false yarn build"
 
 [[redirects]]
   from = "/*"
