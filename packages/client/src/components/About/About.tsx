@@ -9,8 +9,7 @@ const About: React.FC = () => (
     <ColumnWrapper>
       <p>
         Paderborn.js is a usergroup focused on JavaScript and related topics. We
-        meet regularly on the 4th Monday of every month at 7pm at Sputnik,
-        Imadstraße 7 in Paderborn.
+        meet regularly at <a href="https://enpit.de/" rel="noopener">Enpit</a>, Marienplatz 11a in Paderborn.
       </p>
       <p>
         We welcome a diverse range of topics that are related in any way to
