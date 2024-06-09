@@ -1,18 +1,34 @@
-import path from 'node:path'
 import type { APIRoute } from 'astro'
-import sharp from 'sharp'
-import ico from 'sharp-ico'
+import { getImage } from 'astro:assets'
+import favicon from '../images/favicon.png'
 
-// relative to project root
-const faviconSrc = path.resolve('src/images/favicon.png')
+const faviconPngSizes = [192, 512]
 
 export const GET: APIRoute = async () => {
-  const buffer32 = await sharp(faviconSrc).resize(32).toFormat('png').toBuffer()
-  const buffer16 = await sharp(faviconSrc).resize(16).toFormat('png').toBuffer()
+  const icons = await Promise.all(
+    faviconPngSizes.map(async (size) => {
+      const image = await getImage({
+        src: favicon,
+        width: size,
+        height: size,
+        format: 'png',
+      })
+      return {
+        src: image.src,
+        type: `image/${image.options.format}`,
+        sizes: `${image.options.width}x${image.options.height}`,
+      }
+    }),
+  )
 
-  const icoBuffer = ico.encode([buffer16, buffer32])
+  const manifest = {
+    name: 'Your site title',
+    description: 'Your site description',
+    start_url: '/',
+    display: 'standalone',
+    id: 'some-unique-id',
+    icons,
+  }
 
-  return new Response(icoBuffer, {
-    headers: { 'Content-Type': 'image/x-icon' },
-  })
+  return new Response(JSON.stringify(manifest))
 }

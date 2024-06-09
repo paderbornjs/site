@@ -1,12 +1,8 @@
 import { defineConfig } from 'astro/config'
-import solidJs from '@astrojs/solid-js'
-import solidSvg from 'vite-plugin-solid-svg'
+import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [solidJs({ devtools: true })],
+  integrations: [react()],
   output: 'static',
-  vite: {
-    plugins: [solidSvg()],
-  },
 })
