@@ -1,3 +1,9 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
 # dependencies
 node_modules
 .pnp.*
@@ -11,12 +17,8 @@ node_modules
 # testing
 coverage
 
-# production
-dist
-
 # misc
 .DS_Store
-.astro
 
 lerna-debug.log
 npm-debug.log*
