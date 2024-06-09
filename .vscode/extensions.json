@@ -1,21 +1,16 @@
 {
   "recommendations": [
+    "astro-build.astro-vscode",
+    "bungcip.better-toml",
     "christian-kohler.npm-intellisense",
     "christian-kohler.path-intellisense",
     "codezombiech.gitignore",
     "cssho.vscode-svgviewer",
     "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "jpoissonnier.vscode-styled-components",
     "kamikillerto.vscode-colorize",
-    "mikestead.dotenv",
-    "msjsdiag.debugger-for-chrome",
-    "ms-vsliveshare.vsliveshare",
-    "ms-vsliveshare.vsliveshare-pack",
     "pflannery.vscode-versionlens",
-    "prisma.vscode-graphql",
-    "rebornix.project-snippets",
     "redhat.vscode-yaml"
-  ]
+  ],
+  "unwantedRecommendations": []
 }

@@ -1,80 +1,54 @@
 {
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": false
-  },
-  "editor.snippetSuggestions": "top",
+  // Enable the ESlint flat config support
+  // (remove this if your ESLint extension above v3.0.5)
+  "eslint.experimental.useFlatConfig": true,
 
-  // colorize
-  "colorize.colorized_colors": ["HEXA", "RGB", "HSL"],
-  "colorize.languages": [
-    "css",
-    "sass",
-    "scss",
-    "less",
-    "postcss",
-    "sss",
-    "stylus",
-    "xml",
-    "svg",
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+  "editor.tabSize": 2,
+
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off" },
+    { "rule": "format/*", "severity": "off" },
+    { "rule": "*-indent", "severity": "off" },
+    { "rule": "*-spacing", "severity": "off" },
+    { "rule": "*-spaces", "severity": "off" },
+    { "rule": "*-order", "severity": "off" },
+    { "rule": "*-dangle", "severity": "off" },
+    { "rule": "*-newline", "severity": "off" },
+    { "rule": "*quotes", "severity": "off" },
+    { "rule": "*semi", "severity": "off" }
+  ],
+
+  // Enable eslint for all supported languages
+  "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
-  ],
-
-  // gitlens
-  "gitlens.currentLine.enabled": false,
-  "gitlens.mode.statusBar.enabled": true,
-
-  // eslint
-  "eslint.options": {
-    "configFile": ".eslintrc.js"
-  },
-  "eslint.autoFixOnSave": true,
-  "eslint.alwaysShowStatus": true,
-  "eslint.packageManager": "yarn",
-  "eslint.workingDirectories": [
-    "./packages/client",
-    "./packages/api",
-    "./packages/schema"
-  ],
-  "eslint.validate": [
-    {
-      "language": "javascript"
-    },
-    {
-      "language": "javascriptreact"
-    },
-    {
-      "language": "typescript"
-    },
-    {
-      "language": "typescriptreact"
-    }
-  ],
-
-  "prettier.eslintIntegration": true,
-
-  // versionlens
-  "versionlens.showVersionLensesAtStartup": false,
-  "versionlens.showDependencyStatusesAtStartup": false,
-
-  "[handlebars]": {
-    "editor.formatOnSave": false
-  },
-
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml",
+    "xml",
+    "gql",
+    "graphql",
+    "astro",
+    "css",
+    "less",
+    "scss",
+    "pcss",
+    "postcss"
+  ]
 }
