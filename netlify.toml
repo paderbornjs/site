@@ -1,9 +1,17 @@
 [build]
-  functions = "packages/api/lambda"
-  publish = "packages/client/build"
-  command = "CI=false yarn build"
+publish = "dist"
+command = "astro build"
+
+[dev]
+command = "astro dev"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
+force = true
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
