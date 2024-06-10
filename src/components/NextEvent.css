@@ -33,12 +33,13 @@
 
 .cta {
   --color: #009a00;
-  --height: 40px;
+  --height: 60px;
   margin-top: 24px;
   background: transparent;
   color: var(--color);
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -50,18 +51,28 @@
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  transition: color 0.5s ease-in-out;
   z-index: 0;
+  font-size: 1.2em;
 }
 
 @media screen and (min-width: 550px) {
   .cta {
-    --height: 50px;
+    --height: 70px;
+  }
+  .going {
+    margin-top: -6px;
+  }
+  .signup {
+    margin-top: 10px;
   }
 }
 @media screen and (min-width: 768px) {
   .cta {
-    --height: 60px;
+    --height: 80px;
+    font-size: 1em;
+  }
+  .going {
+    margin-top: -8px;
   }
 }
 
@@ -83,7 +94,7 @@
 .cta:focus,
 .cta:hover,
 .cta:active {
-  color: #eee;
+  color: #fff;
 }
 
 .cta:focus:before,
@@ -92,9 +103,31 @@
   transform: translateX(0);
 }
 
+.cta:focus .going,
+.cta:hover .going,
+.cta:active .going {
+  opacity: 1;
+}
+
+.cta:focus .signup,
+.cta:hover .signup,
+.cta:active .signup {
+  margin-top: -2px;
+}
+
 .going {
-  margin-top: 8px;
   text-align: center;
+  font-weight: normal;
+  font-size: 0.8em;
+  text-transform: none;
+  opacity: 0;
+  color: #b3ff9e;
+  transition: 0.5s ease-in-out;
+}
+
+.signup {
+  margin-top: 20px;
+  transition: 0.5s ease-in-out;
 }
 
 .flex {
@@ -119,13 +152,7 @@
   }
 }
 
-.loading-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.loading-container > div:nth-child(3) {
+.loading-message {
   margin-top: 12px;
 }
 

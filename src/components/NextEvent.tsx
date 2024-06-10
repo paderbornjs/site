@@ -27,14 +27,14 @@ export default function NextEvent() {
 
   if (response === false) {
     return (
-      <div className="inner-section loading-container">
+      <div className="inner-section next-event loading-container">
         <h2>Next event</h2>
         <div className="loading" role="progressbar" aria-busy="true" aria-live="polite">
           <div></div>
           <div></div>
           <div></div>
         </div>
-        <div>Loading from Meetup</div>
+        <div className="loading-message">Loading from Meetup</div>
       </div>
     )
   }
@@ -44,8 +44,15 @@ export default function NextEvent() {
   if (!nextEvent) {
     return (
       <div className="inner-section">
-        <h2>Next event: Not planned</h2>
-        <div>Please check back at a later date</div>
+        <h2>Next event</h2>
+        <p>
+          No event planned.
+          Join the
+          {' '}
+          <a href="https://www.meetup.com/paderborn-js/" rel="noopener">Meetup</a>
+          {' '}
+          group or check back at a later date!
+        </p>
       </div>
     )
   }
@@ -135,17 +142,14 @@ export default function NextEvent() {
           <div>{venue.name}</div>
           <div>{venue.address_1}</div>
           {venue.city !== 'Paderborn' && <div>{venue.city}</div>}
-        </div>
-      </div>
-      <div className="flex">
-        <a className="cta" href={link}>
-          Sign up
-        </a>
-        <div className="going">
-          (
-          {going}
-          {' '}
-          people going)
+          <a className="cta" href={link}>
+            <div className="signup">Sign up</div>
+            <div className="going">
+              {going}
+              {' '}
+              people going
+            </div>
+          </a>
         </div>
       </div>
     </div>
