@@ -170,8 +170,7 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' })
         <div class="inner-section sponsors">
           <h2>Sponsors</h2>
           <div>
-            <a href="https://enpit.de" rel="noopener"><img src="enpit.png" /></a
-            >
+            <a href="https://enpit.de" rel="noopener"><img src="enpit.svg" /></a>
             <div>
               Enpit hosts our events right in the center of Paderborn and pays
               for our Meetup group!
@@ -375,9 +374,16 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' })
     padding: 24px;
   }
 
+  .sponsors > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
   .sponsors img {
-    max-width: min(100%, 300px);
-    margin: 24px 0 0;
+    min-height: 150px;
+    margin-right: 24px;
   }
 
   @media screen and (min-width: 550px) {
