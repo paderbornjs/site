@@ -66,6 +66,10 @@ export default function NextEvent() {
     = todayDate.getMonth() === eventDate.getMonth()
     && todayDate.getDate() === eventDate.getDate()
 
+  const eventHour = eventDate.getHours() > 12 ? eventDate.getHours() - 12 : eventDate.getHours()
+  const eventMinutes = eventDate.getMinutes() > 0 ? `:${eventDate.getMinutes()}` : ''
+  const eventTime = eventDate.getHours() > 11 ? `${eventHour}${eventMinutes}pm` : `${eventHour}${eventMinutes}am`
+
   return (
     <div className="inner-section next-event">
       <h2>
@@ -73,7 +77,7 @@ export default function NextEvent() {
         {' '}
         <em>
           {isEventToday
-            ? 'Today 7pm'
+            ? `Today ${eventTime}`
             : eventDate.toLocaleString('en-us', {
               day: 'numeric',
               month: 'long',
