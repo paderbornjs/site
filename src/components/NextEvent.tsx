@@ -78,11 +78,11 @@ export default function NextEvent() {
         <em>
           {isEventToday
             ? `Today ${eventTime}`
-            : eventDate.toLocaleString('en-us', {
+            : `${eventDate.toLocaleString('en-us', {
               day: 'numeric',
               month: 'long',
               year: 'numeric',
-            })}
+            })} - ${eventTime}`}
         </em>
       </h2>
       <div className="venue">
