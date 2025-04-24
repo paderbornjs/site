@@ -7,25 +7,24 @@ interface Venue {
   lat: number
   lon: number
   name: string
-  address_1: string
+  address: string
 }
 
 interface Event {
-  link: string
-  status: string
-  time: number
-  venue: Venue
-  yes_rsvp_count: number
+  eventUrl: string
+  dateTime: number
+  venues: Venue[]
+  rsvps: { edges: { node: { id: string } }[] }
 }
 
 export default function NextEvent() {
-  const [response, setResponse] = useState<Event[] | false | null>(false)
+  const [event, setEvent] = useState<Event | false | null>(false)
   useEffect(() => {
     fetch(`${window.location.origin}/api/meetup`)
-      .then(result => result.json()).then(json => setTimeout(() => setResponse(json), 2000))
+      .then(result => result.json()).then(json => setTimeout(() => setEvent(json), 2000))
   }, [])
 
-  if (response === false) {
+  if (event === false) {
     return (
       <div className="inner-section next-event loading-container">
         <h2>Next event</h2>
@@ -39,9 +38,7 @@ export default function NextEvent() {
     )
   }
 
-  const nextEvent = response ? response.sort((a, b) => a.time - b.time).shift() : undefined
-
-  if (!nextEvent) {
+  if (!event) {
     return (
       <div className="inner-section">
         <h2>Next event</h2>
@@ -57,10 +54,12 @@ export default function NextEvent() {
     )
   }
 
-  const { link, time, venue, yes_rsvp_count: going } = nextEvent
+  const { eventUrl, dateTime, venues, rsvps } = event
+  const going = rsvps.edges.length
+  const venue = venues[0]!
 
   const todayDate = new Date()
-  const eventDate = new Date(time)
+  const eventDate = new Date(dateTime)
 
   const isEventToday
     = todayDate.getMonth() === eventDate.getMonth()
@@ -87,7 +86,7 @@ export default function NextEvent() {
       </h2>
       <div className="venue">
         <a
-          href={`https://www.google.com/maps/dir//${venue.name},${venue.address_1},${
+          href={`https://www.google.com/maps/dir//${venue.name},${venue.address},${
           venue.city
         }/@${venue.lat},${venue.lon},14z`}
           rel="noopener"
@@ -144,9 +143,9 @@ export default function NextEvent() {
         <div className="flex">
           <b>Location</b>
           <div>{venue.name}</div>
-          <div>{venue.address_1}</div>
+          <div>{venue.address}</div>
           {venue.city !== 'Paderborn' && <div>{venue.city}</div>}
-          <a className="cta" href={link}>
+          <a className="cta" href={eventUrl}>
             <div className="signup">Sign up</div>
             <div className="going">
               {going}
